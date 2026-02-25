@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSP Contabilidade - Sistema de Gestão Tributária e Contábil</title>
+  <meta name="description" content="Sistema completo para gestão tributária, legislação, agenda de obrigações, simuladores e notícias atualizadas para profissionais de contabilidade">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/tUIHXpXfP1d0gQgDsGVQryvUT602/uploads/1759847717919-pagamento.jpeg">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="logo">
+          <div class="logo-icon">T</div>
+          <h1 class="logo-text">TRIBUTARIUM</h1>
+        </div>
+        <nav class="main-nav">
+          <a href="#">BOLETINS</a>
+          <a href="#">AGENDA</a>
+          <a href="#">LEGISLAÇÃO</a>
+          <a href="#">FERRAMENTAS</a>
+          <a href="#">BOLETIM DIÁRIO</a>
+          <a href="#">CURSOS</a>
+          <a href="#">FAQ</a>
+        </nav>
+      </div>
+      <div class="header-right">
+        <button class="btn btn-accent">CENTRAL DE CONSULTAS</button>
+        <button class="btn btn-light">ÁREA DO CLIENTE</button>
+        <button class="btn-icon">🔍</button>
+        <button class="btn-icon">🔔</button>
+        <button class="btn-icon">👤</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-title">ACESSO RÁPIDO</div>
+        <nav class="sidebar-nav">
+          <a href="#">Regulamentos Estaduais</a>
+          <a href="#">Regulamentos Municipais</a>
+          <a href="#">IPI</a>
+          <a href="#">Simples Nacional</a>
+          <a href="#">ICMS/ISS</a>
+          <a href="#">Regulamento do IR</a>
+          <a href="#"><span>Manual da NBS</span><span class="badge">Novo</span></a>
+          <a href="#"><span>Manual da Reforma Tributária</span><span class="badge">Novo</span></a>
+          <a href="#">Manual da DIRBI</a>
+          <a href="#">Manual da Atividade Rural</a>
+          <a href="#">Scont</a>
+          <a href="#">Trabalhista</a>
+          <a href="#">Previdenciário</a>
+          <a href="#">Comércio Exterior</a>
+          <a href="#">Direito Societário e Comercial</a>
+          <a href="#">Contratos</a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Banner -->
+      <section class="banner">
+        <div class="banner-label">DESTAQUES TRIBUTARIUM</div>
+        <div class="banner-content">
+          <h2>PRORROGADA A LICENÇA-MATERNIDADE EM ATÉ 120 (CENTO E VINTE) DIAS</h2>
+          <p>A Lei nº 15.222, de 29 de setembro de 2025 Altera a Consolidação das Leis do Trabalho (CLT), artigo §92, § 7º, para prorrogar a licença-maternidade em até 120 dias.</p>
+          <button class="btn btn-accent">SAIBA MAIS</button>
+        </div>
+      </section>
+
+      <div class="content-area">
+        <!-- Grid principal -->
+        <div class="main-grid">
+          <!-- Agenda -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Sua Agenda de Obrigações</h3>
+              <div class="tab-group">
+                <button class="tab active">FEDERAL</button>
+                <button class="tab">ESTADUAL</button>
+                <button class="tab">MUNICIPAL</button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="calendar-nav">
+                <button class="btn-icon">◀</button>
+                <span>outubro de 2025</span>
+                <button class="btn-icon">▶</button>
+              </div>
+              <div class="calendar-grid" id="calendar-grid"></div>
+            </div>
+          </div>
+
+          <!-- Notícias -->
+          <div class="card card-dark">
+            <div class="card-header">
+              <h3>Notícias Diárias</h3>
+              <div class="date-label">📅 06/10/25</div>
+            </div>
+            <div class="card-body">
+              <div class="news-item">
+                <h4>DISPENSA DE TÉCNICA DE HOSPITAL PÚBLICO ...</h4>
+                <p>A Sétima Turma do Tribunal Superior do Trabalho rejeitou o recurso de uma técnica em secretariado do Hospital de Clínicas de Porto Alegre (RS) que pretendia anular sua dispensa.</p>
+                <button class="btn btn-secondary-sm">Ver Notícia</button>
+              </div>
+              <div class="pagination-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+              <button class="btn btn-secondary full-width">+ NOTÍCIAS CLIQUE AQUI</button>
+            </div>
+          </div>
+
+          <!-- Indicadores + Tabelas -->
+          <div class="side-column">
+            <div class="card">
+              <div class="card-header">
+                <h3>Indicadores Econômicos e financeiros</h3>
+                <div class="update-info" id="update-info">🔄 Carregando...</div>
+              </div>
+              <div class="card-body">
+                <div id="indicators-list" class="indicators-list">
+                  <div class="skeleton"></div>
+                  <div class="skeleton"></div>
+                  <div class="skeleton"></div>
+                  <div class="skeleton"></div>
+                </div>
+                <div class="source-text">Fonte: AwesomeAPI / Banco Central do Brasil</div>
+              </div>
+            </div>
+
+            <div class="card card-accent-bg">
+              <div class="card-header">
+                <h3 class="card-title-accent">Tabelas Práticas e Índices</h3>
+              </div>
+              <div class="card-body">
+                <a href="#" class="table-link">Trabalho e Previdência</a>
+                <a href="#" class="table-link">Federal</a>
+                <a href="#" class="table-link">Estadual</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simuladores -->
+        <section class="simulators-section">
+          <h2 class="section-title">Simuladores - Últimos Lançamentos</h2>
+          <div class="simulators-grid">
+            <div class="card simulator-card">
+              <span class="sim-category">Área Trabalho e Previdência</span>
+              <h4>CALCULADORA DE HORAS MENSAIS <span class="badge">NOVO</span></h4>
+              <a href="#" class="sim-link">Simule aqui →</a>
+            </div>
+            <div class="card simulator-card">
+              <span class="sim-category">Área Trabalho e Previdência</span>
+              <h4>RESCISÃO/ SIMULADOR <span class="badge">NOVO</span></h4>
+              <a href="#" class="sim-link">Simule aqui →</a>
+            </div>
+            <div class="card simulator-card">
+              <span class="sim-category">Área Trabalho e Previdência</span>
+              <h4>CALCULADORA DE IRRF E INSS <span class="badge">NOVO</span></h4>
+              <a href="#" class="sim-link">Simule aqui →</a>
+            </div>
+            <div class="card simulator-card">
+              <span class="sim-category">Área Trabalho e Previdência</span>
+              <h4>CALCULADORA SALÁRIO FAMÍLIA <span class="badge">NOVO</span></h4>
+              <a href="#" class="sim-link">Simule aqui →</a>
+            </div>
+            <div class="card simulator-card">
+              <span class="sim-category">Área Federal</span>
+              <h4>CALCULADORA DO FATOR 'R' <span class="badge">NOVO</span></h4>
+              <a href="#" class="sim-link">Simule aqui →</a>
+            </div>
+            <div class="card simulator-card">
+              <span class="sim-category">Área Federal</span>
+              <h4>CALCULADORA DO SIMPLES NACIONAL <span class="badge">NOVO</span></h4>
+              <a href="#" class="sim-link">Simule aqui →</a>
+            </div>
+            <div class="card simulator-card">
+              <span class="sim-category">Área Municipal</span>
+              <h4>CALCULADORA DE DÉCIMO TERCEIRO PROPORCIONAL <span class="badge">NOVO</span></h4>
+              <a href="#" class="sim-link">Simule aqui →</a>
+            </div>
+            <div class="card simulator-card">
+              <span class="sim-category">Área Federal</span>
+              <h4>PLANEJAMENTO TRIBUTÁRIO – SN/LP/LR <span class="badge">NOVA ATUALIZAÇÃO</span></h4>
+              <a href="#" class="sim-link">Simule aqui →</a>
+            </div>
+          </div>
+          <div class="center">
+            <button class="btn btn-primary">VER TODAS</button>
+          </div>
+        </section>
+
+        <!-- Últimas Publicações -->
+        <section class="publications-section">
+          <div class="section-header">
+            <h2>Últimas Publicações</h2>
+            <a href="#" class="link-accent">Ver mais →</a>
+          </div>
+          <div class="publications-list">
+            <div class="card publication-card">
+              <div class="pub-header">
+                <span class="pub-category">Federal - Trabalhista</span>
+                <a href="#" class="link-accent">Ver mais →</a>
+              </div>
+              <h4>LEI Nº 15.232, DE 6 DE OUTUBRO DE 2025 (DOU DE 07.10.2025)</h4>
+              <p>Altera a Lei nº 13.819, de 26 de abril de 2019, que institui a Política Nacional de Prevenção da Automutilação e do Suicídio.</p>
+            </div>
+            <div class="card publication-card">
+              <div class="pub-header">
+                <span class="pub-category">Estadual</span>
+                <a href="#" class="link-accent">Ver mais →</a>
+              </div>
+              <h4>DECRETO Nº 16.680, DE 3 DE OUTUBRO DE 2025.</h4>
+              <p>Altera a redação e acrescenta dispositivos ao Anexo I - Dos Benefícios Fiscais, e ao Anexo V - Dos Regimes Especiais.</p>
+            </div>
+            <div class="card publication-card">
+              <div class="pub-header">
+                <span class="pub-category">Municipal</span>
+                <a href="#" class="link-accent">Ver mais →</a>
+              </div>
+              <h4>LEI MUNICIPAL Nº 130/2025 DE 25 DE SETEMBRO DE 2025</h4>
+              <p>"ALTERA A LEI N. 312 DE 10 DE OUTUBRO DE 2005."</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>PSP</h3>
+        <p>Excelência contábil com foco em resultados e minimalismo.</p>
+      </div>
+      <div class="footer-col">
+        <h4>SERVIÇOS</h4>
+        <a href="#">IRPF 2024</a>
+        <a href="#">Folha de Pagamento</a>
+        <a href="#">Planejamento</a>
+        <a href="#">Auditoria</a>
+      </div>
+      <div class="footer-col">
+        <h4>EMPRESA</h4>
+        <a href="#">Sobre Nós</a>
+        <a href="#">Carreiras</a>
+        <a href="#">Blog</a>
+        <a href="#">Contato</a>
+      </div>
+      <div class="footer-col">
+        <h4>LEGAL</h4>
+        <a href="#">Privacidade</a>
+        <a href="#">Termos</a>
+        <a href="#">Segurança</a>
+      </div>
+      <div class="footer-col">
+        <h4>SOCIAL</h4>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+    <div class="footer-certifications">
+      <span>ISO 9001</span>
+      <span>CRC-SP</span>
+      <span>SESCON</span>
+      <span>FENACON</span>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 PSP Contabilidade - Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
