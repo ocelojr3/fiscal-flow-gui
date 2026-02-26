@@ -7,6 +7,7 @@ import FinancialIndicators from "@/components/FinancialIndicators";
 import PracticalTables from "@/components/PracticalTables";
 import Simulators from "@/components/Simulators";
 import LatestPublications from "@/components/LatestPublications";
+import IRRFCalculator from "@/components/IRRFCalculator";
 
 const Index = () => {
   return (
@@ -20,6 +21,8 @@ const Index = () => {
           <Banner />
           
           <div className="p-6 space-y-8">
+            <IRRFCalculator />
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <AgendaCalendar />
               <NewsSection />
