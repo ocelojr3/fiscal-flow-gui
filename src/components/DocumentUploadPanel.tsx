@@ -2,12 +2,15 @@ import { useState, useRef } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 import { Upload, X, FileText, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
 interface UploadedFile {
   name: string;
   size: number;
   type: string;
+  nativeFile: File; // Mantemos o arquivo real para o upload
 }
 
 interface DocumentUploadPanelProps {
@@ -16,6 +19,7 @@ interface DocumentUploadPanelProps {
 }
 
 const DocumentUploadPanel = ({ open, onOpenChange }: DocumentUploadPanelProps) => {
+  const { toast } = useToast();
   const [step, setStep] = useState<"info" | "upload" | "success">("info");
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
@@ -48,6 +52,7 @@ const DocumentUploadPanel = ({ open, onOpenChange }: DocumentUploadPanelProps) =
         name: f.name,
         size: f.size,
         type: f.type,
+        nativeFile: f,
       }));
       setFiles((prev) => [...prev, ...newFiles]);
     }
@@ -61,6 +66,7 @@ const DocumentUploadPanel = ({ open, onOpenChange }: DocumentUploadPanelProps) =
         name: f.name,
         size: f.size,
         type: f.type,
+        nativeFile: f,
       }));
       setFiles((prev) => [...prev, ...newFiles]);
     }
@@ -76,14 +82,52 @@ const DocumentUploadPanel = ({ open, onOpenChange }: DocumentUploadPanelProps) =
     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   };
 
-  const handleSubmit = async () => {
+const handleSubmit = async () => {
     setIsSubmitting(true);
-    // Simulate submission
-    await new Promise((r) => setTimeout(r, 1500));
-    setIsSubmitting(false);
-    setStep("success");
-  };
+    
+    try {
+      // 1. Enviar cada arquivo selecionado para o Storage
+      const uploadedPaths = [];
+      
+      for (const fileObj of files) {
+        // Criamos um nome único para evitar que arquivos com mesmo nome se apaguem
+        const fileExt = fileObj.name.split('.').pop();
+        const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+        const filePath = `${email}/${fileName}`; // Organiza em pastas por e-mail
 
+        const { data, error } = await supabase.storage
+          .from('fiscal_docs') // Nome do seu bucket privado
+          .upload(filePath, fileObj.nativeFile);
+
+        if (error) throw error;
+        uploadedPaths.push(data.path);
+      }
+
+      // 2. Salvar o lead no Banco de Dados com os caminhos dos arquivos
+      const { error: dbError } = await supabase
+        .from('leads_contabilidade') // Nome da sua tabela
+        .insert([{ 
+          nome: nome, 
+          email: email, 
+          cpf: cpf.replace(/\D/g, ""), // Limpa pontos e traços
+          telefone: telefone.replace(/\D/g, ""),
+          documento_url: uploadedPaths.join(', ') // Salva os links dos arquivos
+        }]);
+
+      if (dbError) throw dbError;
+
+      setStep("success"); // Vai para a tela de sucesso
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Erro no envio",
+        description: error.message || "Não foi possível enviar os documentos.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
   const handleClose = () => {
     onOpenChange(false);
     setTimeout(() => {
@@ -178,12 +222,10 @@ const DocumentUploadPanel = ({ open, onOpenChange }: DocumentUploadPanelProps) =
                   Documentos aceitos:
                 </p>
                 <p className="text-muted-foreground text-xs ml-6">
-                  Informe de rendimentos, comprovantes de despesas médicas, recibos de educação, 
-                  comprovante de residência, documentos de dependentes (PDF, JPG, PNG)
+                  Informe de rendimentos, comprovantes de despesas médicas, recibos (PDF, JPG, PNG)
                 </p>
               </div>
 
-              {/* Drop zone */}
               <div
                 onDragOver={(e) => { e.preventDefault(); setIsDragOver(true); }}
                 onDragLeave={() => setIsDragOver(false)}
@@ -206,7 +248,6 @@ const DocumentUploadPanel = ({ open, onOpenChange }: DocumentUploadPanelProps) =
                 />
               </div>
 
-              {/* File list */}
               {files.length > 0 && (
                 <div className="space-y-2">
                   {files.map((file, i) => (
@@ -255,7 +296,7 @@ const DocumentUploadPanel = ({ open, onOpenChange }: DocumentUploadPanelProps) =
             <h3 className="text-xl font-bold text-foreground">Documentos Enviados!</h3>
             <p className="text-muted-foreground">
               Recebemos seus documentos com sucesso. Nossa equipe entrará em contato
-              pelo e-mail <strong>{email}</strong> em até 24 horas.
+              pelo e-mail <strong>{email}</strong> em breve.
             </p>
             <Button onClick={handleClose} className="bg-primary hover:bg-primary/90 text-primary-foreground">
               Fechar
