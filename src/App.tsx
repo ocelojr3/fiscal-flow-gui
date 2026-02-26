@@ -23,6 +23,7 @@ const App = () => (
         </Routes>
       </BrowserRouter>
       <Analytics /> {/* 2. Adicione o componente aqui, antes do fechamento do TooltipProvider */}
+      <SpeedInsights />
     </TooltipProvider>
   </QueryClientProvider>
 );
