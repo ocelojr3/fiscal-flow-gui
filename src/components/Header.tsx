@@ -10,7 +10,9 @@ const Header = () => {
             <div className="flex h-10 w-10 items-center justify-center bg-accent rounded">
               <span className="text-xl font-bold text-accent-foreground">T</span>
             </div>
-            <h1 className="text-xl font-bold">TRIBUTARIUM</h1>
+            <h1 className="text-xl font-bold">PSP CONTABIL
+
+            </h1>
           </div>
           
           <nav className="hidden md:flex items-center gap-6 text-sm">
@@ -42,8 +44,6 @@ const Header = () => {
           </Button>
         </div>
       </div>
-    </header>
-  );
-};
+    </header>);};
 
 export default Header;
