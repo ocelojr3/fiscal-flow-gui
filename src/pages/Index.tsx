@@ -8,6 +8,8 @@ import PracticalTables from "@/components/PracticalTables";
 import Simulators from "@/components/Simulators";
 import LatestPublications from "@/components/LatestPublications";
 import IRRFCalculator from "@/components/IRRFCalculator";
+import IRPFDeclarationCTA from "@/components/IRPFDeclarationCTA";
+import AnimatedSection from "@/components/AnimatedSection";
 
 const Index = () => {
   return (
@@ -19,22 +21,33 @@ const Index = () => {
         
         <main className="flex-1 overflow-auto">
           <Banner />
+
+          {/* CTA principal - Declaração IRPF */}
+          <IRPFDeclarationCTA />
           
           <div className="p-6 space-y-8">
-            <IRRFCalculator />
+            <AnimatedSection>
+              <IRRFCalculator />
+            </AnimatedSection>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <AgendaCalendar />
-              <NewsSection />
-              <div className="space-y-6">
-                <FinancialIndicators />
-                <PracticalTables />
+            <AnimatedSection delay={0.1}>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <AgendaCalendar />
+                <NewsSection />
+                <div className="space-y-6">
+                  <FinancialIndicators />
+                  <PracticalTables />
+                </div>
               </div>
-            </div>
+            </AnimatedSection>
             
-            <Simulators />
+            <AnimatedSection delay={0.1}>
+              <Simulators />
+            </AnimatedSection>
             
-            <LatestPublications />
+            <AnimatedSection delay={0.1}>
+              <LatestPublications />
+            </AnimatedSection>
           </div>
         </main>
       </div>
