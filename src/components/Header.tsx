@@ -1,49 +1,26 @@
 import { Button } from "@/components/ui/button";
-import { Bell, Search, User } from "lucide-react";
+import { Phone } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-primary text-primary-foreground shadow-sm">
-      <div className="flex h-16 items-center justify-between px-6">
-        <div className="flex items-center gap-8">
-          <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center bg-accent rounded">
-              <span className="text-xl font-bold text-accent-foreground">T</span>
-            </div>
-            <h1 className="text-xl font-bold">PSP CONTABIL
-
-            </h1>
+    <header className="sticky top-0 z-50 w-full border-b bg-background shadow-sm">
+      <div className="flex h-16 items-center justify-between px-6 max-w-7xl mx-auto">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center bg-primary rounded-lg">
+            <span className="text-xl font-bold text-primary-foreground">P</span>
           </div>
-          
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#" className="hover:text-accent transition-colors">BOLETINS</a>
-            <a href="#" className="hover:text-accent transition-colors">AGENDA</a>
-            <a href="#" className="hover:text-accent transition-colors">LEGISLAÇÃO</a>
-            <a href="#" className="hover:text-accent transition-colors">FERRAMENTAS</a>
-            <a href="#" className="hover:text-accent transition-colors">BOLETIM DIÁRIO</a>
-            <a href="#" className="hover:text-accent transition-colors">CURSOS</a>
-            <a href="#" className="hover:text-accent transition-colors">FAQ</a>
-          </nav>
+          <h1 className="text-xl font-bold text-foreground tracking-tight">
+            PSP CONTABIL
+          </h1>
         </div>
-        
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-            CENTRAL DE CONSULTAS
-          </Button>
-          <Button variant="ghost" size="sm" className="bg-primary-foreground hover:bg-primary-foreground/90 text-primary">
-            ÁREA DO CLIENTE
-          </Button>
-          <Button variant="ghost" size="icon" className="h-9 w-9">
-            <Search className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon" className="h-9 w-9">
-            <Bell className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon" className="h-9 w-9">
-            <User className="h-4 w-4" />
-          </Button>
-        </div>
+
+        <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6">
+          <Phone className="h-4 w-4 mr-2" />
+          Falar com Especialista
+        </Button>
       </div>
-    </header>);};
+    </header>
+  );
+};
 
 export default Header;
