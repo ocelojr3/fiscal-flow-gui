@@ -9,6 +9,7 @@ import Simulators from "@/components/Simulators";
 import LatestPublications from "@/components/LatestPublications";
 import IRRFCalculator from "@/components/IRRFCalculator";
 import IRPFDeclarationCTA from "@/components/IRPFDeclarationCTA";
+import TaxReformResources from "@/components/TaxReformResources";
 import AnimatedSection from "@/components/AnimatedSection";
 
 const Index = () => {
@@ -39,6 +40,10 @@ const Index = () => {
                   <PracticalTables />
                 </div>
               </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.15}>
+              <TaxReformResources />
             </AnimatedSection>
             
             <AnimatedSection delay={0.1}>
