@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Upload, X, FileText, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
@@ -86,37 +85,12 @@ const handleSubmit = async () => {
     setIsSubmitting(true);
     
     try {
-      // 1. Enviar cada arquivo selecionado para o Storage
-      const uploadedPaths = [];
+      // Simula envio - backend será configurado posteriormente
+      await new Promise(resolve => setTimeout(resolve, 1500));
       
-      for (const fileObj of files) {
-        // Criamos um nome único para evitar que arquivos com mesmo nome se apaguem
-        const fileExt = fileObj.name.split('.').pop();
-        const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
-        const filePath = `${email}/${fileName}`; // Organiza em pastas por e-mail
+      console.log('Lead capturado:', { nome, email, cpf: cpf.replace(/\D/g, ""), telefone: telefone.replace(/\D/g, ""), files: files.map(f => f.name) });
 
-        const { data, error } = await supabase.storage
-          .from('fiscal_docs') // Nome do seu bucket privado
-          .upload(filePath, fileObj.nativeFile);
-
-        if (error) throw error;
-        uploadedPaths.push(data.path);
-      }
-
-      // 2. Salvar o lead no Banco de Dados com os caminhos dos arquivos
-      const { error: dbError } = await supabase
-        .from('leads_contabilidade') // Nome da sua tabela
-        .insert([{ 
-          nome: nome, 
-          email: email, 
-          cpf: cpf.replace(/\D/g, ""), // Limpa pontos e traços
-          telefone: telefone.replace(/\D/g, ""),
-          documento_url: uploadedPaths.join(', ') // Salva os links dos arquivos
-        }]);
-
-      if (dbError) throw dbError;
-
-      setStep("success"); // Vai para a tela de sucesso
+      setStep("success");
     } catch (error: any) {
       toast({
         variant: "destructive",
