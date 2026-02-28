@@ -10,6 +10,7 @@ import LatestPublications from "@/components/LatestPublications";
 import IRRFCalculator from "@/components/IRRFCalculator";
 import TaxReformResources from "@/components/TaxReformResources";
 import AnimatedSection from "@/components/AnimatedSection";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
 
 const Index = () => {
   return (
@@ -20,7 +21,7 @@ const Index = () => {
         <HeroSection />
         <TrustSection />
 
-        <div className="max-w-6xl mx-auto px-6 py-8 space-y-8">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 space-y-8">
           <AnimatedSection>
             <IRRFCalculator />
           </AnimatedSection>
@@ -49,6 +50,8 @@ const Index = () => {
           </AnimatedSection>
         </div>
       </main>
+
+      <StickyMobileCTA />
     </div>
   );
 };

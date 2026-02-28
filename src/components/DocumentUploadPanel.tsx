@@ -3,13 +3,14 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, X, FileText, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { Upload, X, FileText, CheckCircle2, AlertCircle, Loader2, ShieldCheck } from "lucide-react";
 
 interface UploadedFile {
   name: string;
   size: number;
   type: string;
-  nativeFile: File; // Mantemos o arquivo real para o upload
+  nativeFile: File;
 }
 
 interface DocumentUploadPanelProps {
@@ -17,41 +18,78 @@ interface DocumentUploadPanelProps {
   onOpenChange: (open: boolean) => void;
 }
 
+const formatPhone = (value: string) => {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+  if (digits.length <= 10) {
+    return digits.replace(/(\d{2})(\d)/, "($1) $2").replace(/(\d{4})(\d)/, "$1-$2");
+  }
+  return digits.replace(/(\d{2})(\d)/, "($1) $2").replace(/(\d{5})(\d)/, "$1-$2");
+};
+
+const formatSize = (bytes: number) => {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+};
+
 const DocumentUploadPanel = ({ open, onOpenChange }: DocumentUploadPanelProps) => {
   const { toast } = useToast();
-  const [step, setStep] = useState<"info" | "upload" | "success">("info");
+  const [step, setStep] = useState<"lead" | "upload" | "success">("lead");
   const [nome, setNome] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [email, setEmail] = useState("");
-  const [telefone, setTelefone] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [leadId, setLeadId] = useState<string | null>(null);
   const [files, setFiles] = useState<UploadedFile[]>([]);
   const [isDragOver, setIsDragOver] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const formatCPF = (value: string) => {
-    const digits = value.replace(/\D/g, "").slice(0, 11);
-    return digits
-      .replace(/(\d{3})(\d)/, "$1.$2")
-      .replace(/(\d{3})(\d)/, "$1.$2")
-      .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+  // Step 1: Save lead (name + whatsapp only)
+  const handleSaveLead = async () => {
+    if (!nome.trim() || whatsapp.replace(/\D/g, "").length < 10) return;
+    setIsSubmitting(true);
+    try {
+      const { data, error } = await supabase
+        .from("leads")
+        .insert({ nome: nome.trim(), whatsapp: whatsapp.replace(/\D/g, "") })
+        .select("id")
+        .single();
+
+      if (error) throw error;
+
+      setLeadId(data.id);
+      toast({ title: "Dados salvos!", description: "Agora envie seus documentos." });
+      setStep("upload");
+    } catch (err: any) {
+      toast({ variant: "destructive", title: "Erro", description: err.message || "Tente novamente." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const formatPhone = (value: string) => {
-    const digits = value.replace(/\D/g, "").slice(0, 11);
-    if (digits.length <= 10) {
-      return digits.replace(/(\d{2})(\d)/, "($1) $2").replace(/(\d{4})(\d)/, "$1-$2");
+  // Step 2: Upload files to storage
+  const handleUploadFiles = async () => {
+    if (!files.length || !leadId) return;
+    setIsSubmitting(true);
+    try {
+      for (const file of files) {
+        const path = `${leadId}/${Date.now()}_${file.name}`;
+        const { error } = await supabase.storage
+          .from("irpf_docs")
+          .upload(path, file.nativeFile);
+        if (error) throw error;
+      }
+      setStep("success");
+    } catch (err: any) {
+      toast({ variant: "destructive", title: "Erro no upload", description: err.message });
+    } finally {
+      setIsSubmitting(false);
     }
-    return digits.replace(/(\d{2})(\d)/, "($1) $2").replace(/(\d{5})(\d)/, "$1-$2");
   };
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const newFiles = Array.from(e.target.files).map((f) => ({
-        name: f.name,
-        size: f.size,
-        type: f.type,
-        nativeFile: f,
+        name: f.name, size: f.size, type: f.type, nativeFile: f,
       }));
       setFiles((prev) => [...prev, ...newFiles]);
     }
@@ -62,64 +100,32 @@ const DocumentUploadPanel = ({ open, onOpenChange }: DocumentUploadPanelProps) =
     setIsDragOver(false);
     if (e.dataTransfer.files) {
       const newFiles = Array.from(e.dataTransfer.files).map((f) => ({
-        name: f.name,
-        size: f.size,
-        type: f.type,
-        nativeFile: f,
+        name: f.name, size: f.size, type: f.type, nativeFile: f,
       }));
       setFiles((prev) => [...prev, ...newFiles]);
     }
   };
 
-  const removeFile = (index: number) => {
-    setFiles((prev) => prev.filter((_, i) => i !== index));
-  };
+  const removeFile = (index: number) => setFiles((prev) => prev.filter((_, i) => i !== index));
 
-  const formatSize = (bytes: number) => {
-    if (bytes < 1024) return `${bytes} B`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-  };
-
-const handleSubmit = async () => {
-    setIsSubmitting(true);
-    
-    try {
-      // Simula envio - backend será configurado posteriormente
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      console.log('Lead capturado:', { nome, email, cpf: cpf.replace(/\D/g, ""), telefone: telefone.replace(/\D/g, ""), files: files.map(f => f.name) });
-
-      setStep("success");
-    } catch (error: any) {
-      toast({
-        variant: "destructive",
-        title: "Erro no envio",
-        description: error.message || "Não foi possível enviar os documentos.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-  
   const handleClose = () => {
     onOpenChange(false);
     setTimeout(() => {
-      setStep("info");
+      setStep("lead");
       setNome("");
-      setCpf("");
-      setEmail("");
-      setTelefone("");
+      setWhatsapp("");
+      setLeadId(null);
       setFiles([]);
     }, 300);
   };
 
-  const canProceed = nome.trim() && cpf.replace(/\D/g, "").length === 11 && email.includes("@") && telefone.replace(/\D/g, "").length >= 10;
+  const canProceedLead = nome.trim().length >= 2 && whatsapp.replace(/\D/g, "").length >= 10;
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-lg max-h-[90vh] overflow-y-auto">
-        {step === "info" && (
+        {/* STEP 1: Lead capture */}
+        {step === "lead" && (
           <>
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2 text-xl">
@@ -127,56 +133,35 @@ const handleSubmit = async () => {
                 Declaração IRPF 2026
               </DialogTitle>
               <DialogDescription>
-                Preencha seus dados para iniciarmos o processo de declaração.
+                Preencha seus dados para iniciarmos. É rápido!
               </DialogDescription>
             </DialogHeader>
-
             <div className="space-y-4 mt-4">
               <div>
                 <label className="text-sm font-medium text-foreground mb-1.5 block">Nome Completo</label>
-                <Input
-                  placeholder="Seu nome completo"
-                  value={nome}
-                  onChange={(e) => setNome(e.target.value)}
-                />
+                <Input placeholder="Seu nome completo" value={nome} onChange={(e) => setNome(e.target.value)} />
               </div>
               <div>
-                <label className="text-sm font-medium text-foreground mb-1.5 block">CPF</label>
-                <Input
-                  placeholder="000.000.000-00"
-                  value={cpf}
-                  onChange={(e) => setCpf(formatCPF(e.target.value))}
-                />
+                <label className="text-sm font-medium text-foreground mb-1.5 block">WhatsApp</label>
+                <Input placeholder="(00) 00000-0000" value={whatsapp} onChange={(e) => setWhatsapp(formatPhone(e.target.value))} />
               </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1.5 block">E-mail</label>
-                <Input
-                  type="email"
-                  placeholder="seu@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1.5 block">Telefone / WhatsApp</label>
-                <Input
-                  placeholder="(00) 00000-0000"
-                  value={telefone}
-                  onChange={(e) => setTelefone(formatPhone(e.target.value))}
-                />
-              </div>
-
               <Button
-                onClick={() => setStep("upload")}
-                disabled={!canProceed}
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                onClick={handleSaveLead}
+                disabled={!canProceedLead || isSubmitting}
+                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground h-12 text-base font-semibold"
               >
-                Próximo: Enviar Documentos
+                {isSubmitting ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : null}
+                {isSubmitting ? "Salvando..." : "Continuar"}
               </Button>
+              <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                Dados criptografados e protegidos.
+              </div>
             </div>
           </>
         )}
 
+        {/* STEP 2: File upload */}
         {step === "upload" && (
           <>
             <DialogHeader>
@@ -185,10 +170,9 @@ const handleSubmit = async () => {
                 Envie seus Documentos
               </DialogTitle>
               <DialogDescription>
-                Arraste ou selecione os documentos necessários para sua declaração.
+                Arraste ou selecione o informe de rendimentos e outros documentos.
               </DialogDescription>
             </DialogHeader>
-
             <div className="space-y-4 mt-4">
               <div className="bg-secondary/50 rounded-lg p-3 text-sm space-y-1">
                 <p className="font-medium text-foreground flex items-center gap-2">
@@ -196,7 +180,7 @@ const handleSubmit = async () => {
                   Documentos aceitos:
                 </p>
                 <p className="text-muted-foreground text-xs ml-6">
-                  Informe de rendimentos, comprovantes de despesas médicas, recibos (PDF, JPG, PNG)
+                  Informe de rendimentos, comprovantes médicos, recibos (PDF, JPG, PNG)
                 </p>
               </div>
 
@@ -212,14 +196,7 @@ const handleSubmit = async () => {
                 <Upload className="h-10 w-10 mx-auto text-muted-foreground mb-3" />
                 <p className="font-medium text-foreground">Arraste seus arquivos aqui</p>
                 <p className="text-sm text-muted-foreground mt-1">ou clique para selecionar</p>
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  multiple
-                  accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
-                  onChange={handleFileSelect}
-                  className="hidden"
-                />
+                <input ref={fileInputRef} type="file" multiple accept=".pdf,.jpg,.jpeg,.png" onChange={handleFileSelect} className="hidden" />
               </div>
 
               {files.length > 0 && (
@@ -239,29 +216,26 @@ const handleSubmit = async () => {
                 </div>
               )}
 
-              <div className="flex gap-3">
-                <Button variant="outline" onClick={() => setStep("info")} className="flex-1">
-                  Voltar
-                </Button>
-                <Button
-                  onClick={handleSubmit}
-                  disabled={files.length === 0 || isSubmitting}
-                  className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                      Enviando...
-                    </>
-                  ) : (
-                    "Enviar Documentos"
-                  )}
-                </Button>
+              <Button
+                onClick={handleUploadFiles}
+                disabled={files.length === 0 || isSubmitting}
+                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground h-12 text-base font-semibold"
+              >
+                {isSubmitting ? (
+                  <><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Enviando...</>
+                ) : (
+                  "Enviar Documentos"
+                )}
+              </Button>
+              <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                Seus dados são criptografados de ponta a ponta. Ambiente 100% seguro contra vazamentos.
               </div>
             </div>
           </>
         )}
 
+        {/* STEP 3: Success */}
         {step === "success" && (
           <div className="text-center py-8 space-y-4">
             <div className="h-16 w-16 mx-auto rounded-full bg-accent/15 flex items-center justify-center">
@@ -269,8 +243,7 @@ const handleSubmit = async () => {
             </div>
             <h3 className="text-xl font-bold text-foreground">Documentos Enviados!</h3>
             <p className="text-muted-foreground">
-              Recebemos seus documentos com sucesso. Nossa equipe entrará em contato
-              pelo e-mail <strong>{email}</strong> em breve.
+              Recebemos seus documentos com sucesso. Nossa equipe entrará em contato pelo seu WhatsApp em breve.
             </p>
             <Button onClick={handleClose} className="bg-primary hover:bg-primary/90 text-primary-foreground">
               Fechar
