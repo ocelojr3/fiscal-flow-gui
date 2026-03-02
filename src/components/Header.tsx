@@ -16,7 +16,10 @@ const Header = () => {
           />
         </div>
 
-        <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6">
+        <Button
+          className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6"
+          onClick={() => window.open("https://wa.me/pspcontabil", "_blank")}
+        >
           <Phone className="h-4 w-4 mr-2" />
           Falar com Especialista
         </Button>

@@ -92,7 +92,7 @@ const HeroSection = () => {
                   size="lg"
                   variant="outline"
                   className="text-base border-primary/20 hover:bg-primary/5 h-14"
-                  onClick={() => window.open("https://wa.me/5511999999999", "_blank")}
+                  onClick={() => window.open("https://wa.me/pspcontabil", "_blank")}
                 >
                   <MessageCircle className="h-5 w-5 mr-2" />
                   Tirar Dúvidas

@@ -243,11 +243,19 @@ const DocumentUploadPanel = ({ open, onOpenChange }: DocumentUploadPanelProps) =
             </div>
             <h3 className="text-xl font-bold text-foreground">Documentos Enviados!</h3>
             <p className="text-muted-foreground">
-              Recebemos seus documentos com sucesso. Nossa equipe entrará em contato pelo seu WhatsApp em breve.
+              Recebemos seus documentos com sucesso. Confirme pelo WhatsApp para agilizar o processo.
             </p>
-            <Button onClick={handleClose} className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              Fechar
-            </Button>
+            <div className="flex flex-col gap-2">
+              <Button
+                onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Acabei de enviar meus documentos para a declaração do IRPF.", "_blank")}
+                className="bg-accent hover:bg-accent/90 text-accent-foreground"
+              >
+                Confirmar pelo WhatsApp
+              </Button>
+              <Button variant="ghost" onClick={handleClose} className="text-muted-foreground">
+                Fechar
+              </Button>
+            </div>
           </div>
         )}
       </DialogContent>
