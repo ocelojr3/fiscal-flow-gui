@@ -63,7 +63,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5 }}
               className="space-y-5">
               
-              <div className="inline-flex items-center gap-2 bg-accent/15 text-accent px-4 py-1.5 rounded-full text-sm font-semibold">IRPF 2026 — Calendário2025
+              <div className="inline-flex items-center gap-2 bg-accent/15 text-accent px-4 py-1.5 rounded-full text-sm font-semibold">
                 <FileText className="h-4 w-4" />
                 IRPF 2026
               </div>
