@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import TrustSection from "@/components/TrustSection";
+import PricingSection from "@/components/PricingSection";
 import AgendaCalendar from "@/components/AgendaCalendar";
 import NewsSection from "@/components/NewsSection";
 import FinancialIndicators from "@/components/FinancialIndicators";
@@ -19,6 +20,7 @@ const Index = () => {
 
       <main>
         <HeroSection />
+        <PricingSection />
         <TrustSection />
 
         <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 space-y-8">

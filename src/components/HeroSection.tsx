@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FileText, ArrowRight, MessageCircle, ShieldCheck, Loader2 } from "lucide-react";
+import { FileText, ArrowRight, MessageCircle, ShieldCheck, Loader2, Stethoscope } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import DocumentUploadPanel from "./DocumentUploadPanel";
@@ -64,8 +64,8 @@ const HeroSection = () => {
               className="space-y-5"
             >
               <div className="inline-flex items-center gap-2 bg-accent/15 text-accent px-4 py-1.5 rounded-full text-sm font-semibold">
-                <FileText className="h-4 w-4" />
-                IRPF 2026
+                <Stethoscope className="h-4 w-4" />
+                IRPF 2026 — Saúde & SST
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
@@ -74,8 +74,9 @@ const HeroSection = () => {
               </h1>
 
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                Envie seus arquivos de forma 100% digital e segura. Nossa equipe de
-                especialistas cuida de toda a burocracia para você.
+                A solução nº 1 para <strong>Clínicas de SST</strong> e{" "}
+                <strong>Profissionais de Saúde</strong> no Brasil. Envie seus arquivos de
+                forma 100% digital e segura. Nossa equipe cuida de toda a burocracia.
               </p>
 
               {/* Mobile: CTA buttons */}
@@ -184,8 +185,9 @@ const HeroSection = () => {
               <motion.div
                 animate={{ y: [0, -6, 0] }}
                 transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                className="absolute -top-3 -right-3 bg-accent text-accent-foreground px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+                className="absolute -top-3 -right-3 bg-accent text-accent-foreground px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-1.5"
               >
+                <Stethoscope className="h-3.5 w-3.5" />
                 100% Digital
               </motion.div>
               <motion.div
