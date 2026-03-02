@@ -74,7 +74,7 @@ const IRRFCalculator = () => {
           Calculadora IRRF 2026 — Regime CLT
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Verifique se seus colaboradores têm imposto retido na fonte. Identifique quem precisa de planejamento tributário e declaração IRPF.
+          Verifique se seus colaboradores têm imposto retido na fonte. <strong>Médicos e profissionais de saúde</strong> podem deduzir despesas via Livro Caixa para maximizar a restituição.
         </p>
       </div>
 
@@ -140,6 +140,14 @@ const IRRFCalculator = () => {
                     <AlertCircle className="h-4 w-4 text-accent mt-0.5 shrink-0" />
                     <span>
                       Este colaborador tem <strong>imposto retido na fonte</strong> e provavelmente precisa declarar IRPF 2026.
+                    </span>
+                  </div>
+                )}
+                {resultado.irrf > 0 && (
+                  <div className="flex items-start gap-2 bg-primary/10 p-3 rounded text-sm border border-primary/20">
+                    <Users className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <span>
+                      <strong>Médicos e profissionais de saúde:</strong> podem deduzir despesas profissionais via Livro Caixa e maximizar a restituição. Nossos especialistas garantem o máximo retorno.
                     </span>
                   </div>
                 )}
