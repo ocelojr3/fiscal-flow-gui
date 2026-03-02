@@ -20,7 +20,7 @@ const StickyMobileCTA = () => {
         <Button
           variant="outline"
           className="h-12 px-4 border-primary/20"
-          onClick={() => window.open("https://wa.me/5511999999999", "_blank")}
+          onClick={() => window.open("https://wa.me/pspcontabil", "_blank")}
         >
           <MessageCircle className="h-5 w-5 text-primary" />
         </Button>
