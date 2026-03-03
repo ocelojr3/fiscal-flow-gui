@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import UrgencyBanner from "@/components/UrgencyBanner";
 import HeroSection from "@/components/HeroSection";
 import TrustSection from "@/components/TrustSection";
 import PricingSection from "@/components/PricingSection";
@@ -16,6 +17,7 @@ import StickyMobileCTA from "@/components/StickyMobileCTA";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <UrgencyBanner />
       <Header />
 
       <main>
