@@ -5,7 +5,7 @@ import { Check, ArrowRight, Building2, Shield, Stethoscope, MessageCircle } from
 
 const plans = [
 {
-  name: "Individual",
+  name: "Imposto de Renda Retido na Fonte (IRRF)",
   highlight: "R$ 11,66/dia",
   price: "R$ 350",
   installment: "ou 12x de R$ 34,90",
