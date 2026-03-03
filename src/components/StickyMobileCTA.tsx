@@ -14,7 +14,7 @@ const StickyMobileCTA = () => {
           onClick={() => setShowUpload(true)}
           className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground h-12 text-sm font-semibold"
         >
-          🚀 Declarar Agora (12x R$ 34,90)
+          🚀 BLINDAGEM FISCAL — 12x R$ 34,90
         </Button>
         <Button
           variant="outline"
