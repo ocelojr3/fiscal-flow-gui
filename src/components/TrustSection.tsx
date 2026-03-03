@@ -4,7 +4,7 @@ import { Users, ShieldCheck, Lock, MapPin, Building2 } from "lucide-react";
 const trustItems = [
   {
     icon: Building2,
-    title: "Empresa Familiar com Sede Própria",
+    title: "Empresa com Sede Própria",
     desc: "Mais de 10 anos de tradição em São Paulo. Estrutura sólida por trás de uma plataforma 100% digital.",
   },
   {
