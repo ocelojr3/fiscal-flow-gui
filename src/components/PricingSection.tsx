@@ -23,7 +23,7 @@ const plans = [
     popular: true,
   },
   {
-    name: "Clínica SST",
+    name: "Prestador de Serviço",
     highlight: "Sob Consulta",
     price: "Pacote B2B",
     installment: "Desconto progressivo a partir de 50 declarações",
@@ -41,8 +41,8 @@ const plans = [
     popular: false,
   },
   {
-    name: "Blindagem",
-    highlight: "R$ 59,90/mês",
+    name: "Consultoria Tributaria",
+    highlight: "R$ 350,00/mês",
     price: "R$ 59,90",
     installment: "Recorrência mensal — cancele quando quiser",
     description: "IRPF incluso + monitoramento de malha fina o ano todo",
