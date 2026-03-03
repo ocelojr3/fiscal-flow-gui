@@ -9,12 +9,12 @@ const plans = [
     highlight: "R$ 11,66/dia",
     price: "R$ 350",
     installment: "ou 12x de R$ 34,90",
-    description: "Ideal para médicos autônomos e profissionais de saúde",
+    description: "Ideal para autônomos e profissionais",
     icon: Stethoscope,
     features: [
       "Declaração IRPF completa",
       "Dedução de Livro Caixa",
-      "Revisão por especialista",
+      "Revisão por Contador",
       "Suporte via WhatsApp",
       "Envio digital 100% seguro",
     ],
@@ -27,7 +27,7 @@ const plans = [
     highlight: "Sob Consulta",
     price: "Pacote B2B",
     installment: "Desconto progressivo a partir de 50 declarações",
-    description: "Para clínicas de SST e empresas com múltiplos colaboradores",
+    description: "Para clínicas Medicas e empresas com múltiplos colaboradores",
     icon: Building2,
     features: [
       "Pacotes de 50+ declarações",
