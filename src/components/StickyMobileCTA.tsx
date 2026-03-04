@@ -1,20 +1,16 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, FileText } from "lucide-react";
-import DocumentUploadPanel from "./DocumentUploadPanel";
+import { MessageCircle } from "lucide-react";
 
 const StickyMobileCTA = () => {
-  const [showUpload, setShowUpload] = useState(false);
-
   return (
     <>
-      {/* Sticky bottom bar - mobile only */}
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-background/95 backdrop-blur-sm border-t border-border p-3 flex gap-2">
         <Button
-          onClick={() => setShowUpload(true)}
+          onClick={() => window.open("https://wa.me/pspcontabil", "_blank")}
           className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground h-12 text-sm font-semibold"
         >
-          🚀 BLINDAGEM FISCAL — 12x R$ 34,90
+          🚀 Falar com Consultor Estratégico
         </Button>
         <Button
           variant="outline"
@@ -24,11 +20,7 @@ const StickyMobileCTA = () => {
           <MessageCircle className="h-5 w-5 text-primary" />
         </Button>
       </div>
-
-      {/* Bottom spacer so content isn't hidden behind sticky bar */}
       <div className="h-20 md:hidden" />
-
-      <DocumentUploadPanel open={showUpload} onOpenChange={setShowUpload} />
     </>
   );
 };

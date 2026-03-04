@@ -40,9 +40,9 @@ const Footer = () => {
             <h4 className="font-bold mb-3">Serviços</h4>
             <ul className="space-y-2 text-secondary-foreground/80">
               <li>Declaração IRPF</li>
-              <li>Blindagem Fiscal 365</li>
               <li>Consultoria Tributária</li>
-              <li>Folha de Pagamento</li>
+              <li>Planejamento Tributário</li>
+              <li>Gestão de Folha</li>
             </ul>
           </div>
           <div>
