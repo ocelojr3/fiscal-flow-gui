@@ -11,6 +11,8 @@ import Simulators from "@/components/Simulators";
 import LatestPublications from "@/components/LatestPublications";
 import IRRFCalculator from "@/components/IRRFCalculator";
 import TaxReformResources from "@/components/TaxReformResources";
+import FAQSection from "@/components/FAQSection";
+import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 
@@ -53,8 +55,11 @@ const Index = () => {
             <LatestPublications />
           </AnimatedSection>
         </div>
+
+        <FAQSection />
       </main>
 
+      <Footer />
       <StickyMobileCTA />
     </div>
   );
