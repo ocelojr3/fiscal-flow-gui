@@ -4,8 +4,8 @@ import { HelpCircle } from "lucide-react";
 
 const faqs = [
   {
-    q: "O que acontece se eu cair na Malha Fina?",
-    a: "Com o plano Blindagem 365, monitoramos seu CPF junto à Receita Federal durante 12 meses. Caso seja identificada qualquer pendência, nossos contadores entram em ação imediatamente para resolver — sem custo adicional de retificação.",
+    q: "O que é Consultoria Tributária Estratégica?",
+    a: "É um serviço de planejamento fiscal personalizado que vai além da simples declaração. Analisamos seu perfil tributário completo para identificar oportunidades de economia, recuperação de créditos e proteção patrimonial ao longo de 12 meses.",
   },
   {
     q: "Meus dados estão seguros na plataforma?",
@@ -20,12 +20,12 @@ const faqs = [
     a: "Não. Cada declaração é revisada e assinada por um contador registrado no CRC (Conselho Regional de Contabilidade). Utilizamos tecnologia para agilizar o processo, mas a revisão final é sempre humana e profissional.",
   },
   {
-    q: "Posso parcelar o pagamento?",
-    a: "Sim! O plano Blindagem 365 pode ser parcelado em até 12x de R$ 34,90 no cartão de crédito, ou R$ 350,00 à vista com desconto. Aceitamos cartão, Pix e boleto.",
+    q: "O que está incluso na Gestão de Folha de Pagamento?",
+    a: "Inclui processamento completo da folha, eSocial, DCTF-Web, gestão de férias, admissões e rescisões, além de acesso a um aplicativo exclusivo para que seus colaboradores consultem holerites e dados em tempo real.",
   },
   {
-    q: "Qual a diferença entre declaração avulsa e Blindagem 365?",
-    a: "A declaração avulsa inclui apenas a entrega do IRPF. Já o Blindagem 365 inclui a declaração + monitoramento de CPF por 12 meses contra Malha Fina + suporte prioritário + retificação gratuita se necessário.",
+    q: "Como funciona o orçamento para Consultoria Tributária?",
+    a: "Cada caso é único. Após uma análise inicial gratuita via WhatsApp, nossos consultores apresentam um orçamento personalizado baseado na complexidade do seu perfil fiscal e nas oportunidades identificadas.",
   },
   {
     q: "A PSP Contabil é uma empresa real com sede física?",
@@ -48,7 +48,7 @@ const FAQSection = () => {
             PERGUNTAS FREQUENTES
           </div>
           <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            Tire suas dúvidas sobre o <span className="text-primary">Leão</span>
+            Tire suas dúvidas sobre nossos <span className="text-primary">serviços</span>
           </h2>
         </motion.div>
 

@@ -7,11 +7,11 @@ const UrgencyBanner = () => {
   if (!visible) return null;
 
   return (
-    <div className="sticky top-0 z-[60] bg-destructive text-destructive-foreground py-2.5 px-4 text-center text-sm font-bold tracking-wide animate-pulse">
+    <div className="sticky top-0 z-[60] bg-destructive text-destructive-foreground py-2.5 px-4 text-center text-sm font-bold tracking-wide">
       <div className="max-w-6xl mx-auto flex items-center justify-center gap-2">
-        <span>⚠️ OFERTA POR TEMPO LIMITADO: Vagas esgotando em 3, 2, 1...</span>
+        <span>⚠️ Vagas para Planejamento Tributário 2026 limitadas por região</span>
         <span className="bg-destructive-foreground text-destructive px-2 py-0.5 rounded font-black text-xs uppercase">
-          APENAS 04 VAGAS RESTANTES!
+          CONSULTE DISPONIBILIDADE
         </span>
         <button
           onClick={() => setVisible(false)}

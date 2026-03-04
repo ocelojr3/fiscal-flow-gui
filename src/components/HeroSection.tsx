@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FileText, ArrowRight, MessageCircle, ShieldCheck, Loader2 } from "lucide-react";
+import { FileText, ArrowRight, MessageCircle, ShieldCheck, Loader2, TrendingUp } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import DocumentUploadPanel from "./DocumentUploadPanel";
@@ -47,11 +47,18 @@ const HeroSection = () => {
   const steps = [
     { step: 1, label: "Informe seus dados", desc: "Nome e WhatsApp — só isso!" },
     { step: 2, label: "Envie seus documentos", desc: "Informe de rendimentos em PDF" },
-    { step: 3, label: "Relaxe por 12 meses", desc: "Monitoramos seu CPF contra a Malha Fina" },
+    { step: 3, label: "Proteção contínua por 12 meses", desc: "Monitoramos seu patrimônio e obrigações fiscais" },
   ];
 
   return (
     <>
+      {/* Urgency sub-banner */}
+      <div className="bg-accent/10 border-b border-accent/20 py-2 text-center">
+        <p className="text-xs md:text-sm font-semibold text-accent">
+          ⚠️ Vagas para Planejamento Tributário 2026 limitadas por região
+        </p>
+      </div>
+
       <section className="py-12 md:py-20 bg-gradient-to-b from-secondary to-background">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -63,17 +70,17 @@ const HeroSection = () => {
               className="space-y-5"
             >
               <div className="inline-flex items-center gap-2 bg-accent/15 text-accent px-4 py-1.5 rounded-full text-sm font-semibold">
-                <FileText className="h-4 w-4" />
-                BLINDAGEM FISCAL 365
+                <TrendingUp className="h-4 w-4" />
+                PLANEJAMENTO TRIBUTÁRIO AVANÇADO
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                Paz de espírito fiscal{" "}
-                <span className="text-primary">por 12 meses.</span>
+                Status, segurança e{" "}
+                <span className="text-primary">recuperação de patrimônio.</span>
               </h1>
 
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                Não entregamos apenas sua declaração — protegemos seu CPF contra a Malha Fina o ano inteiro. 100% digital, revisado por contador, com suporte prioritário.
+                Não entregamos apenas declarações — oferecemos consultoria tributária estratégica com proteção contínua do seu patrimônio. 100% digital, revisado por contador, com suporte prioritário.
               </p>
 
               <CountdownTimer />
@@ -82,10 +89,10 @@ const HeroSection = () => {
               <div className="flex flex-col sm:flex-row gap-3 pt-2 lg:hidden">
                 <Button
                   size="lg"
-                  onClick={() => setShowUpload(true)}
+                  onClick={() => window.open("https://wa.me/pspcontabil", "_blank")}
                   className="bg-accent hover:bg-accent/90 text-accent-foreground text-base px-6 h-14 font-semibold group"
                 >
-                  🚀 Garantir Blindagem 365
+                  🚀 Falar com Consultor Estratégico
                   <ArrowRight className="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1" />
                 </Button>
                 <Button
@@ -131,11 +138,11 @@ const HeroSection = () => {
               <div className="bg-card rounded-2xl border shadow-lg p-8 space-y-6">
                 <div className="text-center space-y-2">
                   <div className="h-14 w-14 mx-auto rounded-2xl bg-primary/10 flex items-center justify-center">
-                    <FileText className="h-7 w-7 text-primary" />
+                    <TrendingUp className="h-7 w-7 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">Garanta sua Blindagem 365</h3>
+                  <h3 className="text-xl font-bold text-foreground">Consultoria Tributária Estratégica</h3>
                   <p className="text-sm text-muted-foreground">
-                    Preencha e comece em menos de 2 minutos
+                    Preencha e receba uma análise personalizada
                   </p>
                 </div>
 
@@ -159,7 +166,7 @@ const HeroSection = () => {
                     <><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Salvando...</>
                   ) : (
                     <>
-                      🚀 Garantir Blindagem 365
+                      Solicitar Análise Tributária
                       <ArrowRight className="h-5 w-5 ml-2" />
                     </>
                   )}
