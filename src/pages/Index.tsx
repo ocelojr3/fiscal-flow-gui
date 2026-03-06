@@ -3,6 +3,7 @@ import UrgencyBanner from "@/components/UrgencyBanner";
 import HeroSection from "@/components/HeroSection";
 import TrustSection from "@/components/TrustSection";
 import PricingSection from "@/components/PricingSection";
+import TechDifferentials from "@/components/TechDifferentials";
 import AgendaCalendar from "@/components/AgendaCalendar";
 import NewsSection from "@/components/NewsSection";
 import FinancialIndicators from "@/components/FinancialIndicators";
@@ -25,6 +26,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <PricingSection />
+        <TechDifferentials />
         <TrustSection />
 
         <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 space-y-8">

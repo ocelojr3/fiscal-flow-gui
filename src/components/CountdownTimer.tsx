@@ -36,7 +36,6 @@ const CountdownTimer = () => {
         return;
       }
       setExpired(true);
-      window.location.reload();
       return;
     }
     const id = setInterval(() => setSeconds((s) => Math.max(0, s - 1)), 1000);
@@ -49,21 +48,21 @@ const CountdownTimer = () => {
   if (expired) {
     return (
       <div className="flex flex-col items-center gap-2 py-4">
-        <div className="bg-destructive/10 border border-destructive/30 rounded-xl px-6 py-4 text-center">
-          <p className="text-sm font-bold text-destructive">
-            ⏰ Oferta Expirada
+        <div className="bg-destructive/10 border border-destructive/30 rounded-xl px-6 py-5 text-center max-w-md">
+          <p className="text-sm font-bold text-destructive mb-2">
+            ⚠️ OFERTA ENCERRADA
           </p>
-          <p className="text-xs text-muted-foreground mt-1">
-            Consulte novos valores via{" "}
-            <a
-              href="https://wa.me/pspcontabil"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary underline font-semibold"
-            >
-              WhatsApp
-            </a>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Nosso limite de consultorias estratégicas para este lote foi atingido. Fale com um consultor para entrar na fila de espera.
           </p>
+          <a
+            href="https://wa.me/pspcontabil?text=Olá! A oferta expirou, gostaria de entrar na fila de espera."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mt-3 bg-accent text-accent-foreground px-4 py-2 rounded-lg text-xs font-bold hover:bg-accent/90 transition-colors"
+          >
+            Entrar na Fila de Espera
+          </a>
         </div>
       </div>
     );

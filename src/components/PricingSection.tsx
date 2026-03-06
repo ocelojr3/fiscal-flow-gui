@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Check, ArrowRight, Building2, Shield, Scale, MessageCircle, Zap, Smartphone } from "lucide-react";
+import { Check, ArrowRight, Building2, Shield, Scale, MessageCircle, Zap, Smartphone, Crown } from "lucide-react";
+import { usePromoExpiry } from "@/hooks/usePromoExpiry";
 
 const PricingSection = () => {
+  const isOfferValid = usePromoExpiry();
   return (
     <section className="py-16 bg-secondary/30">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
@@ -33,7 +35,11 @@ const PricingSection = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <Card className="h-full flex flex-col border shadow-sm">
+            <Card className="h-full flex flex-col border shadow-sm relative overflow-hidden">
+              <div className="absolute top-3 right-3 bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 z-10">
+                <Crown className="h-3 w-3" />
+                VIP / EXCLUSIVO
+              </div>
               <CardHeader className="text-center pb-2 pt-8">
                 <div className="h-12 w-12 mx-auto rounded-xl bg-primary/10 flex items-center justify-center mb-3">
                   <Scale className="h-6 w-6 text-primary" />
@@ -92,7 +98,7 @@ const PricingSection = () => {
               </CardHeader>
               <CardContent className="flex-1 flex flex-col pt-4">
                 <div className="text-center mb-6">
-                  <p className="text-lg text-accent font-bold">Apenas R$ 11,66 por dia</p>
+                  <p className="text-lg text-accent font-bold">Apenas R$ 1,15 por hora de trabalho</p>
                   <p className="text-sm text-muted-foreground mt-1">Gestão completa para 1-5 funcionários a partir de R$ 350,00/mês</p>
                 </div>
                 <ul className="space-y-3 mb-8 flex-1">
@@ -110,13 +116,27 @@ const PricingSection = () => {
                     </li>
                   ))}
                 </ul>
-                <Button
-                  onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Tenho interesse na Gestão de Folha de Pagamento.", "_blank")}
-                  className="w-full h-13 text-base font-bold bg-accent hover:bg-accent/90 text-accent-foreground shadow-md"
-                >
-                  Contratar Gestão de Folha
-                  <ArrowRight className="h-5 w-5 ml-2" />
-                </Button>
+                {isOfferValid ? (
+                  <Button
+                    onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Tenho interesse na Gestão de Folha de Pagamento.", "_blank")}
+                    className="w-full h-13 text-base font-bold bg-accent hover:bg-accent/90 text-accent-foreground shadow-md"
+                  >
+                    Contratar Gestão de Folha
+                    <ArrowRight className="h-5 w-5 ml-2" />
+                  </Button>
+                ) : (
+                  <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-3 text-center">
+                    <p className="text-xs font-bold text-destructive">⚠️ Oferta encerrada para este lote</p>
+                    <a
+                      href="https://wa.me/pspcontabil?text=Olá! Gostaria de consultar o valor atual da Gestão de Folha."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-primary underline font-semibold mt-1 inline-block"
+                    >
+                      Consultar Valor Atual no WhatsApp
+                    </a>
+                  </div>
+                )}
                 <div className="flex items-center justify-center gap-2 mt-3 text-xs text-muted-foreground">
                   <Smartphone className="h-3.5 w-3.5 text-accent" />
                   Inclui app exclusivo para gestão em tempo real
@@ -160,13 +180,27 @@ const PricingSection = () => {
                     </li>
                   ))}
                 </ul>
-                <Button
-                  onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Tenho interesse no pacote B2B para múltiplas declarações.", "_blank")}
-                  className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
-                >
-                  Consultar Orçamento B2B
-                  <MessageCircle className="h-4 w-4 ml-2" />
-                </Button>
+                {isOfferValid ? (
+                  <Button
+                    onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Tenho interesse no pacote B2B para múltiplas declarações.", "_blank")}
+                    className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
+                  >
+                    Consultar Orçamento B2B
+                    <MessageCircle className="h-4 w-4 ml-2" />
+                  </Button>
+                ) : (
+                  <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-3 text-center">
+                    <p className="text-xs font-bold text-destructive">⚠️ Oferta encerrada para este lote</p>
+                    <a
+                      href="https://wa.me/pspcontabil?text=Olá! Gostaria de consultar o valor atual do pacote B2B."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-primary underline font-semibold mt-1 inline-block"
+                    >
+                      Consultar Valor Atual no WhatsApp
+                    </a>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </motion.div>

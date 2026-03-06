@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import DocumentUploadPanel from "./DocumentUploadPanel";
 import CountdownTimer from "./CountdownTimer";
+import { usePromoExpiry } from "@/hooks/usePromoExpiry";
 
 const formatPhone = (value: string) => {
   const digits = value.replace(/\D/g, "").slice(0, 11);
@@ -17,6 +18,7 @@ const formatPhone = (value: string) => {
 };
 
 const HeroSection = () => {
+  const isOfferValid = usePromoExpiry();
   const { toast } = useToast();
   const [showUpload, setShowUpload] = useState(false);
   const [nome, setNome] = useState("");
