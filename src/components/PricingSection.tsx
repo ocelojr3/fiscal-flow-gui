@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Check, ArrowRight, Building2, Shield, Scale, MessageCircle, Zap, Smartphone, Crown } from "lucide-react";
+import { Check, ArrowRight, Building2, Shield, Scale, MessageCircle, Zap, Smartphone, Crown, FileText, CreditCard } from "lucide-react";
 import { usePromoExpiry } from "@/hooks/usePromoExpiry";
 
 const PricingSection = () => {
@@ -19,7 +19,7 @@ const PricingSection = () => {
             <Zap className="h-4 w-4" />
             PLANEJAMENTO TRIBUTÁRIO AVANÇADO
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3 font-serif">
             Soluções sob medida <span className="text-primary">para cada perfil</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -27,7 +27,7 @@ const PricingSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
           {/* Card 1 — Consultoria Tributária */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -73,6 +73,75 @@ const PricingSection = () => {
                   Solicitar Análise de Perfil
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Card 2 — IRPF 2026 (ancoragem de preço) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.05 }}
+            className="relative"
+          >
+            <Card className="h-full flex flex-col border shadow-sm">
+              <CardHeader className="text-center pb-2 pt-8">
+                <div className="h-12 w-12 mx-auto rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                  <FileText className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-bold text-foreground">Declaração IRPF 2026</h3>
+                <p className="text-sm text-muted-foreground">100% digital, revisada por contador</p>
+              </CardHeader>
+              <CardContent className="flex-1 flex flex-col pt-4">
+                <div className="text-center mb-6">
+                  {isOfferValid ? (
+                    <>
+                      <p className="text-lg text-muted-foreground line-through">De R$ 690,00</p>
+                      <p className="text-2xl font-bold text-foreground">12x de <span className="text-accent">R$ 34,90</span></p>
+                      <p className="text-xs text-muted-foreground mt-1">ou R$ 349,00 à vista</p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-lg font-bold text-foreground">Sob Consulta</p>
+                      <p className="text-xs text-muted-foreground mt-1">Lote promocional encerrado</p>
+                    </>
+                  )}
+                </div>
+                <ul className="space-y-3 mb-8 flex-1">
+                  {[
+                    "Declaração completa PF",
+                    "Revisão por contador certificado",
+                    "Retificação gratuita se necessário",
+                    "Suporte via WhatsApp por 12 meses",
+                  ].map((f, j) => (
+                    <li key={j} className="flex items-start gap-2 text-sm">
+                      <Check className="h-4 w-4 text-accent mt-0.5 shrink-0" />
+                      <span className="text-foreground">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                {isOfferValid ? (
+                  <Button
+                    onClick={() => window.open("https://mpago.li/2kDEmyK", "_blank")}
+                    className="w-full h-12 text-base font-semibold bg-accent hover:bg-accent/90 text-accent-foreground"
+                  >
+                    <CreditCard className="h-4 w-4 mr-2" />
+                    Garantir Minha Vaga
+                  </Button>
+                ) : (
+                  <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-3 text-center">
+                    <p className="text-xs font-bold text-destructive">⚠️ Lote encerrado</p>
+                    <a
+                      href="https://wa.me/pspcontabil?text=Olá! Gostaria de saber o valor atual do IRPF 2026."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-primary underline font-semibold mt-1 inline-block"
+                    >
+                      Consultar Valor Atual
+                    </a>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </motion.div>

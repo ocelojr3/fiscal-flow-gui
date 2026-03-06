@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import TrustSection from "@/components/TrustSection";
 import PricingSection from "@/components/PricingSection";
 import TechDifferentials from "@/components/TechDifferentials";
+import ReformaDiagnosticCard from "@/components/ReformaDiagnosticCard";
 import AgendaCalendar from "@/components/AgendaCalendar";
 import NewsSection from "@/components/NewsSection";
 import FinancialIndicators from "@/components/FinancialIndicators";
@@ -43,6 +44,10 @@ const Index = () => {
                 <PracticalTables />
               </div>
             </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.15}>
+            <ReformaDiagnosticCard />
           </AnimatedSection>
 
           <AnimatedSection delay={0.15}>
