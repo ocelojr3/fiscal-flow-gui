@@ -36,6 +36,7 @@ const CountdownTimer = () => {
         return;
       }
       setExpired(true);
+      window.location.reload();
       return;
     }
     const id = setInterval(() => setSeconds((s) => Math.max(0, s - 1)), 1000);

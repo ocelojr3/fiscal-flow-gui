@@ -61,10 +61,10 @@ const PricingSection = () => {
                   ))}
                 </ul>
                 <Button
-                  onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Gostaria de solicitar um orçamento para Consultoria Tributária.", "_blank")}
+                  onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Gostaria de solicitar uma análise de perfil tributário.", "_blank")}
                   className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
-                  Solicitar Orçamento Personalizado
+                  Solicitar Análise de Perfil
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
               </CardContent>
@@ -93,7 +93,7 @@ const PricingSection = () => {
               <CardContent className="flex-1 flex flex-col pt-4">
                 <div className="text-center mb-6">
                   <p className="text-lg text-accent font-bold">Apenas R$ 11,66 por dia</p>
-                  <p className="text-sm text-muted-foreground mt-1">Investimento mensal a partir de R$ 350,00</p>
+                  <p className="text-sm text-muted-foreground mt-1">Gestão completa para 1-5 funcionários a partir de R$ 350,00/mês</p>
                 </div>
                 <ul className="space-y-3 mb-8 flex-1">
                   {[

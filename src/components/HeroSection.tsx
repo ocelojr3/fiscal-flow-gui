@@ -75,8 +75,8 @@ const HeroSection = () => {
               </div>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                Status, segurança e{" "}
-                <span className="text-primary">recuperação de patrimônio.</span>
+                Segurança e Recuperação de Patrimônio{" "}
+                <span className="text-primary">com Inteligência Contábil.</span>
               </h1>
 
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
