@@ -8,69 +8,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* PSP Contabilidade Design System - Luxo/Minimalismo
-   Dourado Champagne (#C5A059), Vinho Profundo (#4A0E0E), Off-White (#F9F9F7), Cinza Grafite (#2D2D2D)
+/* PSP Contabilidade Design System - Premium Dark
+   Azul Marinho Profundo, Grafite, Dourado/Esmeralda
    All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 96%;
-    --foreground: 0 0% 9%;
+    --background: 220 20% 97%;
+    --foreground: 220 25% 12%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 9%;
+    --card: 220 15% 99%;
+    --card-foreground: 220 25% 12%;
 
-    --popover: 0 0% 89%;
-    --popover-foreground: 0 0% 9%;
+    --popover: 220 15% 95%;
+    --popover-foreground: 220 25% 12%;
 
-    /* Vinho sutil - mais claro */
-    --primary: 243 75% 58%;
-    --primary-foreground: 225 100% 96%;
+    /* Azul Marinho Profundo */
+    --primary: 220 60% 25%;
+    --primary-foreground: 42 45% 88%;
 
-    /* Clean secondary */
-    --secondary: 0 0% 32%;
-    --secondary-foreground: 0 0% 98%;
+    /* Grafite */
+    --secondary: 220 10% 92%;
+    --secondary-foreground: 220 25% 12%;
 
-    --muted: 0 0% 63%;
-    --muted-foreground: 0 0% 9%;
+    --muted: 220 10% 75%;
+    --muted-foreground: 220 15% 40%;
 
-    /* Dourado Champagne accent */
-    --accent: 250 100% 97%;
-    --accent-foreground: 258 89% 66%;
+    /* Dourado / Esmeralda accent */
+    --accent: 42 65% 48%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 50%;
     --destructive-foreground: 0 85% 97%;
 
-    --border: 0 0% 83%;
-    --input: 0 0% 83%;
-    --ring: 243 75% 58%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 220 60% 25%;
 
-    --radius: 1.25rem;
+    --radius: 1rem;
 
     /* Sidebar */
-    --sidebar-background: 0 0% 99%;
-    --sidebar-foreground: 0 0% 9%;
-    --sidebar-primary: 243 75% 58%;
-    --sidebar-primary-foreground: 225 100% 96%;
-    --sidebar-accent: 0 0% 32%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 83%;
-    --sidebar-ring: 243 75% 58%;
+    --sidebar-background: 220 20% 98%;
+    --sidebar-foreground: 220 25% 12%;
+    --sidebar-primary: 220 60% 25%;
+    --sidebar-primary-foreground: 42 45% 88%;
+    --sidebar-accent: 42 65% 48%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 220 60% 25%;
 
     /* Custom tokens */
-    --wine: 0 45% 28%;
-    --wine-light: 0 35% 38%;
-    --gold: 42 52% 56%;
-    --gold-light: 42 52% 70%;
-    --offwhite: 0 0% 99%;
-    --graphite: 0 0% 22%;
-    --chart-1: 234 89% 73%;
-    --chart-2: 255 91% 76%;
-    --chart-3: 270 95% 75%;
-    --chart-4: 238 83% 66%;
-    --chart-5: 0 0% 45%;
-    --sidebar: 0 0% 98%;
+    --navy: 220 60% 25%;
+    --navy-light: 220 50% 35%;
+    --gold: 42 65% 48%;
+    --gold-light: 42 55% 62%;
+    --emerald: 160 50% 40%;
+    --graphite: 220 15% 18%;
+    --chart-1: 220 60% 50%;
+    --chart-2: 42 65% 55%;
+    --chart-3: 160 50% 45%;
+    --chart-4: 220 45% 40%;
+    --chart-5: 220 10% 55%;
+    --sidebar: 220 20% 98%;
     --font-sans: 'Lato', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
     --font-serif: 'EB Garamond', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
     --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
@@ -87,48 +87,48 @@
   }
 
   .dark {
-    --background: 0 0% 9%;
-    --foreground: 0 0% 98%;
+    --background: 220 25% 8%;
+    --foreground: 220 10% 95%;
 
-    --card: 0 0% 14%;
-    --card-foreground: 0 0% 98%;
+    --card: 220 20% 12%;
+    --card-foreground: 220 10% 95%;
 
-    --popover: 0 0% 25%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 220 20% 15%;
+    --popover-foreground: 220 10% 95%;
 
-    --primary: 234 89% 73%;
-    --primary-foreground: 243 47% 20%;
+    --primary: 220 50% 55%;
+    --primary-foreground: 220 25% 8%;
 
-    --secondary: 0 0% 45%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 220 10% 90%;
 
-    --muted: 0 0% 45%;
-    --muted-foreground: 0 0% 98%;
+    --muted: 220 10% 35%;
+    --muted-foreground: 220 10% 70%;
 
-    --accent: 261 72% 22%;
-    --accent-foreground: 255 91% 76%;
+    --accent: 42 55% 55%;
+    --accent-foreground: 220 25% 8%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 85% 97%;
 
-    --border: 0 0% 32%;
-    --input: 0 0% 32%;
-    --ring: 234 89% 73%;
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 220 50% 55%;
 
-    --sidebar-background: 0 0% 10%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 234 89% 73%;
-    --sidebar-primary-foreground: 243 47% 20%;
-    --sidebar-accent: 255 91% 76%;
-    --sidebar-accent-foreground: 261 72% 22%;
-    --sidebar-border: 0 0% 32%;
-    --sidebar-ring: 234 89% 73%;
-    --chart-1: 229 93% 81%;
-    --chart-2: 252 94% 85%;
-    --chart-3: 269 97% 85%;
-    --chart-4: 234 89% 73%;
-    --chart-5: 0 0% 45%;
-    --sidebar: 0 0% 14%;
+    --sidebar-background: 220 25% 9%;
+    --sidebar-foreground: 220 10% 95%;
+    --sidebar-primary: 220 50% 55%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 42 55% 55%;
+    --sidebar-accent-foreground: 220 25% 8%;
+    --sidebar-border: 220 15% 22%;
+    --sidebar-ring: 220 50% 55%;
+    --chart-1: 220 55% 60%;
+    --chart-2: 42 60% 60%;
+    --chart-3: 160 45% 50%;
+    --chart-4: 220 50% 55%;
+    --chart-5: 220 10% 50%;
+    --sidebar: 220 20% 12%;
     --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
     --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
     --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
