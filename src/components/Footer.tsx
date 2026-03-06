@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ShieldCheck, Building2, MapPin } from "lucide-react";
+import { ShieldCheck, Building2, MapPin, Lock, KeyRound } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -14,6 +14,14 @@ const Footer = () => {
           <div className="flex items-center gap-2">
             <Building2 className="h-5 w-5 text-accent-foreground" />
             <span className="font-semibold">Sede Própria em São Paulo</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Lock className="h-5 w-5 text-accent-foreground" />
+            <span className="font-semibold">Segurança SSL</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <KeyRound className="h-5 w-5 text-accent-foreground" />
+            <span className="font-semibold">Criptografia AES-256</span>
           </div>
           <div className="flex items-center gap-2">
             <MapPin className="h-5 w-5 text-accent-foreground" />
