@@ -7,6 +7,7 @@ const navLinks = [
   { label: "Início", to: "/" },
   { label: "Quem Somos", to: "/quem-somos" },
   { label: "Serviços", to: "/servicos" },
+  { label: "Guias IRPF", to: "/guias" },
   { label: "Contato", to: "/contato" },
 ];
 

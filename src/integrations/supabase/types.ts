@@ -14,6 +14,87 @@ export type Database = {
   }
   public: {
     Tables: {
+      guide_downloads: {
+        Row: {
+          created_at: string
+          guide_id: string
+          id: string
+          lead_id: string | null
+          nome: string
+          whatsapp: string
+        }
+        Insert: {
+          created_at?: string
+          guide_id: string
+          id?: string
+          lead_id?: string | null
+          nome: string
+          whatsapp: string
+        }
+        Update: {
+          created_at?: string
+          guide_id?: string
+          id?: string
+          lead_id?: string | null
+          nome?: string
+          whatsapp?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "guide_downloads_guide_id_fkey"
+            columns: ["guide_id"]
+            isOneToOne: false
+            referencedRelation: "guides"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "guide_downloads_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      guides: {
+        Row: {
+          category: string
+          content: string | null
+          created_at: string
+          description: string | null
+          id: string
+          is_published: boolean
+          pdf_url: string | null
+          slug: string
+          sort_order: number
+          title: string
+        }
+        Insert: {
+          category?: string
+          content?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_published?: boolean
+          pdf_url?: string | null
+          slug: string
+          sort_order?: number
+          title: string
+        }
+        Update: {
+          category?: string
+          content?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_published?: boolean
+          pdf_url?: string | null
+          slug?: string
+          sort_order?: number
+          title?: string
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           cpf: string | null
@@ -21,6 +102,9 @@ export type Database = {
           email: string | null
           id: string
           nome: string
+          notes: string | null
+          source: string
+          status: string
           whatsapp: string
         }
         Insert: {
@@ -29,6 +113,9 @@ export type Database = {
           email?: string | null
           id?: string
           nome: string
+          notes?: string | null
+          source?: string
+          status?: string
           whatsapp: string
         }
         Update: {
@@ -37,7 +124,28 @@ export type Database = {
           email?: string | null
           id?: string
           nome?: string
+          notes?: string | null
+          source?: string
+          status?: string
           whatsapp?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
         }
         Relationships: []
       }
@@ -46,10 +154,16 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -176,6 +290,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const

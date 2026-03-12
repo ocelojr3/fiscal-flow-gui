@@ -11,6 +11,13 @@ import Servicos from "./pages/Servicos";
 import Contato from "./pages/Contato";
 import PoliticaPrivacidade from "./pages/PoliticaPrivacidade";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/AdminLogin";
+import Dashboard from "./pages/admin/Dashboard";
+import Leads from "./pages/admin/Leads";
+import Arquivos from "./pages/admin/Arquivos";
+import Guias from "./pages/admin/Guias";
+import GuiasPublic from "./pages/GuiasPublic";
+import GuiaDetalhe from "./pages/GuiaDetalhe";
 
 const queryClient = new QueryClient();
 
@@ -26,11 +33,18 @@ const App = () => (
           <Route path="/servicos" element={<Servicos />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/politica-privacidade" element={<PoliticaPrivacidade />} />
+          <Route path="/guias" element={<GuiasPublic />} />
+          <Route path="/guias/:slug" element={<GuiaDetalhe />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin" element={<Dashboard />} />
+          <Route path="/admin/leads" element={<Leads />} />
+          <Route path="/admin/arquivos" element={<Arquivos />} />
+          <Route path="/admin/guias" element={<Guias />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
       <Analytics /> 
-      <SpeedInsights /> { /* 2. Adicione o componente aqui, antes do fechamento do TooltipProvider */}
+      <SpeedInsights />
     </TooltipProvider>
   </QueryClientProvider>
 );
