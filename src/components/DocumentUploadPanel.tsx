@@ -247,7 +247,7 @@ const DocumentUploadPanel = ({ open, onOpenChange }: DocumentUploadPanelProps) =
             </p>
             <div className="flex flex-col gap-2">
               <Button
-                onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Acabei de enviar meus documentos para a declaração do IRPF.", "_blank")}
+                onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Acabei de enviar meus documentos para a declaração do IRPF."), "_blank")}
                 className="bg-accent hover:bg-accent/90 text-accent-foreground"
               >
                 Confirmar pelo WhatsApp

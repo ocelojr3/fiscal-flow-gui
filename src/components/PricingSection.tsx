@@ -284,7 +284,7 @@ const PricingSection = () => {
           <p className="text-sm text-muted-foreground mb-3">Dúvidas sobre qual solução escolher?</p>
           <Button
             variant="outline"
-            onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Preciso de ajuda para escolher a solução ideal.", "_blank")}
+            onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Preciso de ajuda para escolher a solução ideal."), "_blank")}
             className="border-primary/20 hover:bg-primary/5"
           >
             <MessageCircle className="h-4 w-4 mr-2" />
