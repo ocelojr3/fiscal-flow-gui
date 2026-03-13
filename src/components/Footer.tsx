@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ShieldCheck, Building2, MapPin, Lock, KeyRound } from "lucide-react";
+import SecurityBadge from "./SecurityBadge";
 
 const Footer = () => {
   return (
@@ -15,17 +16,15 @@ const Footer = () => {
             <Building2 className="h-5 w-5 text-accent-foreground" />
             <span className="font-semibold">Sede Própria em São Paulo</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Lock className="h-5 w-5 text-accent-foreground" />
-            <span className="font-semibold">Segurança SSL</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <KeyRound className="h-5 w-5 text-accent-foreground" />
-            <span className="font-semibold">Criptografia AES-256</span>
-          </div>
+          <SecurityBadge variant="compact" />
           <div className="flex items-center gap-2">
             <MapPin className="h-5 w-5 text-accent-foreground" />
-            <a href="https://www.google.com/maps/search/PSP+Contabil+São+Paulo" target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline">
+            <a
+              href="https://www.google.com/maps/search/PSP+Contabil+São+Paulo+SP"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold hover:underline"
+            >
               Ver localização
             </a>
           </div>
@@ -47,10 +46,10 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-3">Serviços</h4>
             <ul className="space-y-2 text-secondary-foreground/80">
-              <li>Declaração IRPF</li>
-              <li>Consultoria Tributária</li>
-              <li>Planejamento Tributário</li>
-              <li>Gestão de Folha</li>
+              <li><Link to="/servicos" className="hover:text-secondary-foreground">Declaração IRPF</Link></li>
+              <li><Link to="/servicos" className="hover:text-secondary-foreground">Consultoria Tributária</Link></li>
+              <li><Link to="/servicos" className="hover:text-secondary-foreground">Planejamento Tributário</Link></li>
+              <li><Link to="/servicos" className="hover:text-secondary-foreground">Gestão de Folha</Link></li>
             </ul>
           </div>
           <div>
