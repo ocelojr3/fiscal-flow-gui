@@ -187,7 +187,7 @@ const PricingSection = () => {
                 </ul>
                 {isOfferValid ? (
                   <Button
-                    onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Tenho interesse na Gestão de Folha de Pagamento.", "_blank")}
+                    onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Tenho interesse na Gestão de Folha de Pagamento."), "_blank")}
                     className="w-full h-13 text-base font-bold bg-accent hover:bg-accent/90 text-accent-foreground shadow-md"
                   >
                     Contratar Gestão de Folha
