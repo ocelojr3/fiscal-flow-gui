@@ -251,7 +251,7 @@ const PricingSection = () => {
                 </ul>
                 {isOfferValid ? (
                   <Button
-                    onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Tenho interesse no pacote B2B para múltiplas declarações.", "_blank")}
+                    onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Tenho interesse no pacote B2B para múltiplas declarações."), "_blank")}
                     className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
                   >
                     Consultar Orçamento B2B
