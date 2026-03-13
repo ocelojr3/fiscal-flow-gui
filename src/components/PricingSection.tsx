@@ -67,7 +67,7 @@ const PricingSection = () => {
                   ))}
                 </ul>
                 <Button
-                  onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Gostaria de solicitar uma análise de perfil tributário.", "_blank")}
+                  onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Gostaria de solicitar uma análise de perfil tributário."), "_blank")}
                   className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
                   Solicitar Análise de Perfil
@@ -133,7 +133,7 @@ const PricingSection = () => {
                   <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-3 text-center">
                     <p className="text-xs font-bold text-destructive">⚠️ Lote encerrado</p>
                     <a
-                      href="https://wa.me/pspcontabil?text=Olá! Gostaria de saber o valor atual do IRPF 2026."
+                      href={"https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Gostaria de saber o valor atual do IRPF 2026.")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs text-primary underline font-semibold mt-1 inline-block"
@@ -187,7 +187,7 @@ const PricingSection = () => {
                 </ul>
                 {isOfferValid ? (
                   <Button
-                    onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Tenho interesse na Gestão de Folha de Pagamento.", "_blank")}
+                    onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Tenho interesse na Gestão de Folha de Pagamento."), "_blank")}
                     className="w-full h-13 text-base font-bold bg-accent hover:bg-accent/90 text-accent-foreground shadow-md"
                   >
                     Contratar Gestão de Folha
@@ -197,7 +197,7 @@ const PricingSection = () => {
                   <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-3 text-center">
                     <p className="text-xs font-bold text-destructive">⚠️ Oferta encerrada para este lote</p>
                     <a
-                      href="https://wa.me/pspcontabil?text=Olá! Gostaria de consultar o valor atual da Gestão de Folha."
+                      href={"https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Gostaria de consultar o valor atual da Gestão de Folha.")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs text-primary underline font-semibold mt-1 inline-block"
@@ -251,7 +251,7 @@ const PricingSection = () => {
                 </ul>
                 {isOfferValid ? (
                   <Button
-                    onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Tenho interesse no pacote B2B para múltiplas declarações.", "_blank")}
+                    onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Tenho interesse no pacote B2B para múltiplas declarações."), "_blank")}
                     className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
                   >
                     Consultar Orçamento B2B
@@ -261,7 +261,7 @@ const PricingSection = () => {
                   <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-3 text-center">
                     <p className="text-xs font-bold text-destructive">⚠️ Oferta encerrada para este lote</p>
                     <a
-                      href="https://wa.me/pspcontabil?text=Olá! Gostaria de consultar o valor atual do pacote B2B."
+                      href={"https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Gostaria de consultar o valor atual do pacote B2B.")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs text-primary underline font-semibold mt-1 inline-block"
@@ -284,7 +284,7 @@ const PricingSection = () => {
           <p className="text-sm text-muted-foreground mb-3">Dúvidas sobre qual solução escolher?</p>
           <Button
             variant="outline"
-            onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Preciso de ajuda para escolher a solução ideal.", "_blank")}
+            onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Preciso de ajuda para escolher a solução ideal."), "_blank")}
             className="border-primary/20 hover:bg-primary/5"
           >
             <MessageCircle className="h-4 w-4 mr-2" />

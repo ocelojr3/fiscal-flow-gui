@@ -68,7 +68,7 @@ const GuiasPublic = () => {
           </p>
           <Button
             className="bg-accent hover:bg-accent/90 text-accent-foreground px-8"
-            onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Preciso de consultoria para meu IRPF.", "_blank")}
+            onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Preciso de consultoria para meu IRPF."), "_blank")}
           >
             Falar com Consultor Especialista
           </Button>

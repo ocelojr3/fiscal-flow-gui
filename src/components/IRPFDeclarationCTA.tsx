@@ -76,7 +76,7 @@ const IRPFDeclarationCTA = () => {
                   size="lg"
                   variant="outline"
                   className="text-base border-primary/20 hover:bg-primary/5"
-                  onClick={() => window.open("https://wa.me/pspcontabil", "_blank")}
+                  onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Preciso de ajuda com meu IRPF."), "_blank")}
                 >
                   <Phone className="h-4 w-4 mr-2" />
                   Falar com Especialista

@@ -60,6 +60,17 @@ const TechDifferentials = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-8 text-center"
+        >
+          <p className="text-sm font-semibold text-accent bg-accent/10 inline-block px-6 py-3 rounded-full">
+            ✅ Expertise comprovada: Gerenciamos atualmente a folha de pagamento de mais de 30 empresas com precisão e conformidade total
+          </p>
+        </motion.div>
       </div>
     </section>
   );

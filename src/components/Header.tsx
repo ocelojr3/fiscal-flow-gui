@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone, Menu, X } from "lucide-react";
+import SecurityBadge from "./SecurityBadge";
 
 const navLinks = [
   { label: "Início", to: "/" },
@@ -39,12 +40,13 @@ const Header = () => {
               {link.label}
             </Link>
           ))}
+          <SecurityBadge />
         </nav>
 
         <div className="flex items-center gap-3">
           <Button
             className="hidden md:inline-flex bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6"
-            onClick={() => window.open("https://w.app/psp-contabil", "_blank")}
+            onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Gostaria de falar com um especialista."), "_blank")}
           >
             <Phone className="h-4 w-4 mr-2" />
             Falar com Especialista
@@ -76,7 +78,7 @@ const Header = () => {
           ))}
           <Button
             className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
-            onClick={() => window.open("https://w.app/psp-contabil", "_blank")}
+            onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Gostaria de falar com um especialista."), "_blank")}
           >
             <Phone className="h-4 w-4 mr-2" />
             Falar com Especialista
