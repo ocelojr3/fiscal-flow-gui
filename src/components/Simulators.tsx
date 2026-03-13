@@ -1,48 +1,17 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Simulators = () => {
   const simulators = [
-    {
-      category: "Área Trabalho e Previdência",
-      title: "CALCULADORA DE HORAS MENSAIS",
-      badge: "NOVO",
-    },
-    {
-      category: "Área Trabalho e Previdência",
-      title: "RESCISÃO/ SIMULADOR",
-      badge: "NOVO",
-    },
-    {
-      category: "Área Trabalho e Previdência",
-      title: "CALCULADORA DE IRRF E INSS",
-      badge: "NOVO",
-    },
-    {
-      category: "Área Trabalho e Previdência",
-      title: "CALCULADORA SALÁRIO FAMÍLIA",
-      badge: "NOVO",
-    },
-    {
-      category: "Área Federal",
-      title: "CALCULADORA DO FATOR 'R'",
-      badge: "NOVO",
-    },
-    {
-      category: "Área Federal",
-      title: "CALCULADORA DO SIMPLES NACIONAL",
-      badge: "NOVO",
-    },
-    {
-      category: "Área Municipal",
-      title: "CALCULADORA DE DÉCIMO TERCEIRO PROPORCIONAL",
-      badge: "NOVO",
-    },
-    {
-      category: "Área Federal",
-      title: "PLANEJAMENTO TRIBUTÁRIO – SN/LP/LR",
-      badge: "NOVA ATUALIZAÇÃO",
-    },
+    { category: "Área Trabalho e Previdência", title: "CALCULADORA DE HORAS MENSAIS", badge: "NOVO" },
+    { category: "Área Trabalho e Previdência", title: "RESCISÃO/ SIMULADOR", badge: "NOVO" },
+    { category: "Área Trabalho e Previdência", title: "CALCULADORA DE IRRF E INSS", badge: "NOVO" },
+    { category: "Área Trabalho e Previdência", title: "CALCULADORA SALÁRIO FAMÍLIA", badge: "NOVO" },
+    { category: "Área Federal", title: "CALCULADORA DO FATOR 'R'", badge: "NOVO" },
+    { category: "Área Federal", title: "CALCULADORA DO SIMPLES NACIONAL", badge: "NOVO" },
+    { category: "Área Municipal", title: "CALCULADORA DE DÉCIMO TERCEIRO PROPORCIONAL", badge: "NOVO" },
+    { category: "Área Federal", title: "PLANEJAMENTO TRIBUTÁRIO – SN/LP/LR", badge: "NOVA ATUALIZAÇÃO" },
   ];
 
   return (
@@ -64,7 +33,11 @@ const Simulators = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <Button variant="link" className="text-primary p-0 h-auto font-semibold">
+              <Button
+                variant="link"
+                className="text-primary p-0 h-auto font-semibold"
+                onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent(`Olá! Tenho interesse no simulador: ${simulator.title}`), "_blank")}
+              >
                 Simule aqui →
               </Button>
             </CardContent>
@@ -73,9 +46,11 @@ const Simulators = () => {
       </div>
 
       <div className="text-center">
-        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
-          VER TODAS
-        </Button>
+        <Link to="/servicos">
+          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+            VER TODAS
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -26,20 +26,29 @@ const Index = () => {
 
       <main>
         <HeroSection />
-        <PricingSection />
-        <TechDifferentials />
-        <TrustSection />
 
-        <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 space-y-8">
+        <div className="py-16">
+          <PricingSection />
+        </div>
+
+        <div className="py-16">
+          <TechDifferentials />
+        </div>
+
+        <div className="py-12">
+          <TrustSection />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 md:px-6 py-12 space-y-16">
           <AnimatedSection>
             <IRRFCalculator />
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <AgendaCalendar />
               <NewsSection />
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <FinancialIndicators />
                 <PracticalTables />
               </div>
@@ -63,7 +72,9 @@ const Index = () => {
           </AnimatedSection>
         </div>
 
-        <FAQSection />
+        <div className="py-12">
+          <FAQSection />
+        </div>
       </main>
 
       <Footer />

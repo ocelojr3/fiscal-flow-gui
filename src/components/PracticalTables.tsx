@@ -1,11 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const PracticalTables = () => {
   const categories = [
-    { title: "Trabalho e Previdência", link: "#" },
-    { title: "Federal", link: "#" },
-    { title: "Estadual", link: "#" },
+    { title: "Trabalho e Previdência", to: "/servicos" },
+    { title: "Federal", to: "/servicos" },
+    { title: "Estadual", to: "/servicos" },
   ];
 
   return (
@@ -17,13 +18,14 @@ const PracticalTables = () => {
       </CardHeader>
       <CardContent className="space-y-2">
         {categories.map((category, index) => (
-          <Button
-            key={index}
-            variant="link"
-            className="text-primary justify-start w-full p-0 h-auto font-normal"
-          >
-            {category.title}
-          </Button>
+          <Link key={index} to={category.to}>
+            <Button
+              variant="link"
+              className="text-primary justify-start w-full p-0 h-auto font-normal"
+            >
+              {category.title}
+            </Button>
+          </Link>
         ))}
       </CardContent>
     </Card>
