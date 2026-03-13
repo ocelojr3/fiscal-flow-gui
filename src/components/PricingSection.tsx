@@ -67,7 +67,7 @@ const PricingSection = () => {
                   ))}
                 </ul>
                 <Button
-                  onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Gostaria de solicitar uma análise de perfil tributário.", "_blank")}
+                  onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Gostaria de solicitar uma análise de perfil tributário."), "_blank")}
                   className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
                   Solicitar Análise de Perfil
