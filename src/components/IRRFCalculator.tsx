@@ -225,7 +225,11 @@ const IRRFCalculator = () => {
             <p className="opacity-90 text-sm mb-4">
               Identifique colaboradores com retenção na fonte e ofereça planejamento tributário personalizado. A PSP Contabilidade cuida de cada declaração.
             </p>
-            <Button variant="secondary" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+            <Button
+              variant="secondary"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground"
+              onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Gostaria de saber mais sobre o planejamento tributário IRPF 2026."), "_blank")}
+            >
               Falar com Especialista
             </Button>
           </CardContent>

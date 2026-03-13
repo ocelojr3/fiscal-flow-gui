@@ -50,6 +50,21 @@ const LatestPublications = () => {
           </Card>
         ))}
       </div>
+
+      <div className="mt-6 p-4 bg-primary/5 border border-primary/20 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <p className="font-semibold text-foreground text-sm">📰 Jornal no eSocial — PSP Contábil</p>
+          <p className="text-xs text-muted-foreground">Acompanhe nossas publicações e atualizações no LinkedIn</p>
+        </div>
+        <Button
+          variant="outline"
+          size="sm"
+          className="border-primary/30 hover:bg-primary/10 shrink-0"
+          onClick={() => window.open("https://www.linkedin.com/company/pspcontabil", "_blank", "noopener,noreferrer")}
+        >
+          Seguir no LinkedIn →
+        </Button>
+      </div>
     </div>
   );
 };

@@ -40,6 +40,7 @@ const Header = () => {
               {link.label}
             </Link>
           ))}
+          <SecurityBadge />
         </nav>
 
         <div className="flex items-center gap-3">
