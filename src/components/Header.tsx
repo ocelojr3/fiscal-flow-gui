@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone, Menu, X } from "lucide-react";
+import SecurityBadge from "./SecurityBadge";
 
 const navLinks = [
   { label: "Início", to: "/" },
