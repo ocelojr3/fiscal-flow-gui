@@ -261,7 +261,7 @@ const PricingSection = () => {
                   <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-3 text-center">
                     <p className="text-xs font-bold text-destructive">⚠️ Oferta encerrada para este lote</p>
                     <a
-                      href="https://wa.me/pspcontabil?text=Olá! Gostaria de consultar o valor atual do pacote B2B."
+                      href={"https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Gostaria de consultar o valor atual do pacote B2B.")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs text-primary underline font-semibold mt-1 inline-block"
