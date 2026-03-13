@@ -133,7 +133,7 @@ const PricingSection = () => {
                   <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-3 text-center">
                     <p className="text-xs font-bold text-destructive">⚠️ Lote encerrado</p>
                     <a
-                      href="https://wa.me/pspcontabil?text=Olá! Gostaria de saber o valor atual do IRPF 2026."
+                      href={"https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Gostaria de saber o valor atual do IRPF 2026.")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs text-primary underline font-semibold mt-1 inline-block"
