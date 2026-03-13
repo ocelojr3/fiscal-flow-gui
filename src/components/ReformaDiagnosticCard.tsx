@@ -30,7 +30,7 @@ const ReformaDiagnosticCard = () => {
               </p>
             </div>
             <Button
-              onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Gostaria de solicitar o diagnóstico de transição para o IVA Dual (Reforma Tributária 2026).", "_blank")}
+              onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Gostaria de solicitar o diagnóstico de transição para o IVA Dual (Reforma Tributária 2026)."), "_blank")}
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shrink-0"
             >
               Solicitar Diagnóstico

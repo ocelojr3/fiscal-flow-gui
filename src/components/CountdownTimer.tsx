@@ -56,7 +56,7 @@ const CountdownTimer = () => {
             Nosso limite de consultorias estratégicas para este lote foi atingido. Fale com um consultor para entrar na fila de espera.
           </p>
           <a
-            href="https://wa.me/pspcontabil?text=Olá! A oferta expirou, gostaria de entrar na fila de espera."
+            href={"https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! A oferta expirou, gostaria de entrar na fila de espera.")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 mt-3 bg-accent text-accent-foreground px-4 py-2 rounded-lg text-xs font-bold hover:bg-accent/90 transition-colors"

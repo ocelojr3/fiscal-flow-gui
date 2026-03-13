@@ -86,7 +86,7 @@ const Contato = () => {
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-6">
               <div className="bg-card border rounded-2xl p-6 space-y-5">
                 <h2 className="text-xl font-bold text-foreground">Canais de Atendimento</h2>
-                <a href="https://w.app/psp-contabil" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl bg-accent/10 hover:bg-accent/20 transition-colors">
+                <a href="https://wa.me/5511994595404" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl bg-accent/10 hover:bg-accent/20 transition-colors">
                   <MessageCircle className="h-6 w-6 text-accent-foreground" />
                   <div>
                     <p className="font-semibold text-foreground text-sm">WhatsApp</p>

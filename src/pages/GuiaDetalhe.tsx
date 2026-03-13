@@ -153,7 +153,7 @@ const GuiaDetalhe = () => {
           <p className="text-muted-foreground mb-3">Precisa de ajuda profissional?</p>
           <Button
             variant="outline"
-            onClick={() => window.open("https://wa.me/pspcontabil?text=Olá! Li o guia sobre IRPF e preciso de consultoria.", "_blank")}
+            onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Li o guia sobre IRPF e preciso de consultoria."), "_blank")}
           >
             Falar com Consultor
           </Button>
