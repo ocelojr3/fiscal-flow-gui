@@ -63,7 +63,7 @@ const Footer = () => {
           <div>
             <h4 className="font-bold mb-3">Contato</h4>
             <ul className="space-y-2 text-secondary-foreground/80">
-              <li><a href="https://wa.me/5511994595404" target="_blank" rel="noopener noreferrer" className="hover:text-secondary-foreground">WhatsApp</a></li>
+              <li><a href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER || "5511994595404"}`} target="_blank" rel="noopener noreferrer" className="hover:text-secondary-foreground">WhatsApp</a></li>
               <li>contato@pspcontabil.com.br</li>
               <li>São Paulo — SP</li>
             </ul>

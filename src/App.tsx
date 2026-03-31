@@ -16,6 +16,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import Leads from "./pages/admin/Leads";
 import Arquivos from "./pages/admin/Arquivos";
 import Guias from "./pages/admin/Guias";
+import Configuracoes from "./pages/admin/Configuracoes";
 import GuiasPublic from "./pages/GuiasPublic";
 import GuiaDetalhe from "./pages/GuiaDetalhe";
 
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/admin/leads" element={<Leads />} />
           <Route path="/admin/arquivos" element={<Arquivos />} />
           <Route path="/admin/guias" element={<Guias />} />
+          <Route path="/admin/configuracoes" element={<Configuracoes />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

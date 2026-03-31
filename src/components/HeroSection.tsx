@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import DocumentUploadPanel from "./DocumentUploadPanel";
 import CountdownTimer from "./CountdownTimer";
 import { usePromoExpiry } from "@/hooks/usePromoExpiry";
+import { useWhatsApp } from "@/hooks/useWhatsApp";
 
 const formatPhone = (value: string) => {
   const digits = value.replace(/\D/g, "").slice(0, 11);
@@ -20,6 +21,7 @@ const formatPhone = (value: string) => {
 const HeroSection = () => {
   const isOfferValid = usePromoExpiry();
   const { toast } = useToast();
+  const { open: openWhatsApp } = useWhatsApp();
   const [showUpload, setShowUpload] = useState(false);
   const [nome, setNome] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
@@ -91,7 +93,7 @@ const HeroSection = () => {
               <div className="flex flex-col sm:flex-row gap-3 pt-2 lg:hidden">
                 <Button
                   size="lg"
-                  onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Gostaria de falar com um consultor tributário."), "_blank")}
+                  onClick={() => openWhatsApp("Olá! Gostaria de falar com um consultor tributário.")}
                   className="bg-accent hover:bg-accent/90 text-accent-foreground text-base px-6 h-14 font-semibold group"
                 >
                   🚀 Falar com Consultor Estratégico
@@ -101,7 +103,7 @@ const HeroSection = () => {
                   size="lg"
                   variant="outline"
                   className="text-base border-primary/20 hover:bg-primary/5 h-14"
-                  onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Tenho dúvidas sobre IRPF 2026."), "_blank")}
+                  onClick={() => openWhatsApp("Olá! Tenho dúvidas sobre IRPF 2026.")}
                 >
                   <MessageCircle className="h-5 w-5 mr-2" />
                   Tirar Dúvidas

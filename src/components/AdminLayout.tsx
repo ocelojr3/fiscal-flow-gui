@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAdmin } from "@/hooks/useAdmin";
 import {
-  LayoutDashboard, Users, FileText, BookOpen, Settings, LogOut, Loader2,
+  LayoutDashboard, Users, FileText, BookOpen, Settings, LogOut, Loader2, Newspaper,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -12,6 +12,8 @@ const navItems = [
   { label: "CRM / Leads", to: "/admin/leads", icon: Users },
   { label: "Arquivos IRPF", to: "/admin/arquivos", icon: FileText },
   { label: "Guias & Manuais", to: "/admin/guias", icon: BookOpen },
+  { label: "Boletim Contábil", to: "/admin/boletim", icon: Newspaper },
+  { label: "Configurações", to: "/admin/configuracoes", icon: Settings },
 ];
 
 const AdminLayout = ({ children }: { children: ReactNode }) => {

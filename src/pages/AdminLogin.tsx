@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Lock, Loader2, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const ADMIN_WHATSAPP = "5511994595404";
+const ADMIN_WHATSAPP = import.meta.env.VITE_WHATSAPP_NUMBER || "5511994595404";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");

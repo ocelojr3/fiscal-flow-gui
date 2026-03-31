@@ -3,9 +3,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { FileText, Upload, Shield, ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import DocumentUploadPanel from "./DocumentUploadPanel";
+import { useWhatsApp } from "@/hooks/useWhatsApp";
 
 const IRPFDeclarationCTA = () => {
   const [showUpload, setShowUpload] = useState(false);
+  const { open: openWhatsApp } = useWhatsApp();
 
   const benefits = [
     { icon: Shield, text: "Declaração segura e sem erros" },
@@ -76,7 +78,7 @@ const IRPFDeclarationCTA = () => {
                   size="lg"
                   variant="outline"
                   className="text-base border-primary/20 hover:bg-primary/5"
-                  onClick={() => window.open("https://wa.me/5511994595404?text=" + encodeURIComponent("Olá! Preciso de ajuda com meu IRPF."), "_blank")}
+                  onClick={() => openWhatsApp("Olá! Preciso de ajuda com meu IRPF.")}
                 >
                   <Phone className="h-4 w-4 mr-2" />
                   Falar com Especialista
