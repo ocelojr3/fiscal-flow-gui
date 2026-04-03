@@ -69,8 +69,11 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="border-t border-border/20 mt-8 pt-6 text-center text-xs text-secondary-foreground/60">
-          © {new Date().getFullYear()} PSP Contabil. Todos os direitos reservados. CNPJ: XX.XXX.XXX/0001-XX
+        <div className="border-t border-border/20 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-secondary-foreground/60">
+          <span>© {new Date().getFullYear()} PSP Contabil. Todos os direitos reservados. CNPJ: XX.XXX.XXX/0001-XX</span>
+          <Link to="/admin-login" className="hover:text-secondary-foreground/40 transition-colors">
+            Área Restrita
+          </Link>
         </div>
       </div>
     </footer>

@@ -10,15 +10,18 @@ interface NewsItem {
 
 const fetchNews = async (): Promise<NewsItem[]> => {
   const feeds = [
-    'https://www.infomoney.com.br/economia/feed/',
-    'https://valor.globo.com/financas/rss',
+    'https://jornalcontabil.com.br/feed/',
+    'https://www.contabeis.com.br/noticias/feed/',
+    'https://www.gov.br/receitafederal/pt-br/assuntos/noticias/@@rss.xml',
   ];
 
   for (const feed of feeds) {
     try {
       const res = await fetch(
-        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed)}`
+        `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed)}&count=4`,
+        { signal: AbortSignal.timeout(5000) }
       );
+      if (!res.ok) continue;
       const data = await res.json();
       if (data.status === 'ok' && data.items?.length) {
         return data.items.slice(0, 4).map((item: any) => ({
