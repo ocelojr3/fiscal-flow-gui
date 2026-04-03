@@ -9,7 +9,6 @@ import AgendaCalendar from "@/components/AgendaCalendar";
 import NewsSection from "@/components/NewsSection";
 import FinancialIndicators from "@/components/FinancialIndicators";
 import PracticalTables from "@/components/PracticalTables";
-import Simulators from "@/components/Simulators";
 import LatestPublications from "@/components/LatestPublications";
 import IRRFCalculator from "@/components/IRRFCalculator";
 import TaxReformResources from "@/components/TaxReformResources";
@@ -61,10 +60,6 @@ const Index = () => {
 
           <AnimatedSection delay={0.15}>
             <TaxReformResources />
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.1}>
-            <Simulators />
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
