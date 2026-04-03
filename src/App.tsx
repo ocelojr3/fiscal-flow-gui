@@ -17,8 +17,13 @@ import Leads from "./pages/admin/Leads";
 import Arquivos from "./pages/admin/Arquivos";
 import Guias from "./pages/admin/Guias";
 import Configuracoes from "./pages/admin/Configuracoes";
+import Clientes from "./pages/admin/Clientes";
+import Documentos from "./pages/admin/Documentos";
+import Importar from "./pages/admin/Importar";
 import GuiasPublic from "./pages/GuiasPublic";
 import GuiaDetalhe from "./pages/GuiaDetalhe";
+import PortalLogin from "./pages/portal/Login";
+import PortalDashboard from "./pages/portal/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +47,11 @@ const App = () => (
           <Route path="/admin/arquivos" element={<Arquivos />} />
           <Route path="/admin/guias" element={<Guias />} />
           <Route path="/admin/configuracoes" element={<Configuracoes />} />
+          <Route path="/admin/clientes" element={<Clientes />} />
+          <Route path="/admin/documentos" element={<Documentos />} />
+          <Route path="/admin/importar" element={<Importar />} />
+          <Route path="/portal/login" element={<PortalLogin />} />
+          <Route path="/portal/dashboard" element={<PortalDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
