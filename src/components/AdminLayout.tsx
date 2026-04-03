@@ -4,11 +4,15 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAdmin } from "@/hooks/useAdmin";
 import {
   LayoutDashboard, Users, FileText, BookOpen, Settings, LogOut, Loader2, Newspaper,
+  UserCircle, FolderOpen, FileSpreadsheet,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
   { label: "Dashboard", to: "/admin", icon: LayoutDashboard },
+  { label: "Clientes", to: "/admin/clientes", icon: UserCircle },
+  { label: "Documentos", to: "/admin/documentos", icon: FolderOpen },
+  { label: "Importar Clientes", to: "/admin/importar", icon: FileSpreadsheet },
   { label: "CRM / Leads", to: "/admin/leads", icon: Users },
   { label: "Arquivos IRPF", to: "/admin/arquivos", icon: FileText },
   { label: "Guias & Manuais", to: "/admin/guias", icon: BookOpen },
