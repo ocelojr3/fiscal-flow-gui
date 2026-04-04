@@ -15,13 +15,10 @@ export const useAdmin = () => {
         return;
       }
 
-      const { data: roles } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", user.id)
-        .eq("role", "admin");
+      const { data: isAdmin } = await supabase
+        .rpc("has_role", { _user_id: user.id, _role: "admin" });
 
-      if (!roles?.length) {
+      if (!isAdmin) {
         await supabase.auth.signOut();
         navigate("/admin-login");
         return;
