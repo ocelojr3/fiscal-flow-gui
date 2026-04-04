@@ -21,13 +21,10 @@ const AdminLogin = () => {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error("Usuário não encontrado");
 
-    const { data: roles } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", user.id)
-      .eq("role", "admin");
+    const { data: isAdmin } = await supabase
+      .rpc("has_role", { _user_id: user.id, _role: "admin" });
 
-    if (!roles?.length) {
+    if (!isAdmin) {
       await supabase.auth.signOut();
       throw new Error("Acesso negado. Você não tem permissão de administrador.");
     }
